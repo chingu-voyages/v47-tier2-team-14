@@ -1,17 +1,17 @@
 import './App.css'
-import Header from "./components/Header";
-import Dashboard from "./components/Dashboard";
-import Footer from "./components/Footer";
+import Header from "./components/Header/Header";
+import SideMenu from './components/SideMenu/SideMenu';
+import Dashboard from "./components/Dashboard/Dashboard";
+import Footer from "./components/Footer/Footer";
 
 function App() {
-  
   return (
-    <>
-      <h2>Chingu Task Manager</h2>
+    <div className='app-container'>
       <Header />
+      <SideMenu />
       <Dashboard />
       <Footer />
-    </>
+    </div>
   )
 }
 

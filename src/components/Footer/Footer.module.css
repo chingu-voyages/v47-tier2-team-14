@@ -1,0 +1,30 @@
+footer {
+    border: 2px solid goldenrod;
+    grid-area: footer;
+}
+
+footer a {
+    color: green;
+    text-decoration: underline;
+}
+
+.repo-link {
+    color: green;
+    position: relative;
+}
+
+footer a[data-title]:hover::after {
+    background-color: rgb(216, 172, 172);
+    border-radius: 25px;
+    color: green;
+    content: attr(data-title);
+    position: absolute;
+    bottom: 35px;
+    right: 35%;
+    padding: 0.5rem;
+    text-align: center;
+}
+
+.text {
+    color: green;
+}

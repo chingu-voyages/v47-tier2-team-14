@@ -1,0 +1,8 @@
+aside {
+    border: 2px solid red;
+    grid-area: aside;
+}
+
+.aside-menu-text {
+    color: lightblue;
+}
