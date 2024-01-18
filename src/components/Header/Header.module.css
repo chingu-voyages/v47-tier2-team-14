@@ -1,0 +1,9 @@
+header {
+    border: 2px solid blue;
+    color: pink;
+    grid-area: header;
+}
+
+.header-text {
+    color: aqua;
+}
