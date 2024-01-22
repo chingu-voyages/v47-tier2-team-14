@@ -1,4 +1,4 @@
-import styles from "./Footer.module.css";
+import styles from './Footer.module.css';
 
 let currentYear = new Date().getFullYear();
 

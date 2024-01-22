@@ -1,6 +1,7 @@
 footer {
     border: 2px solid goldenrod;
     grid-area: footer;
+    padding: var(--padding-2rem) 0;
 }
 
 footer a {
