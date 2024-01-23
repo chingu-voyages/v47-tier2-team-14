@@ -1,9 +1,10 @@
 header {
     border: 2px solid blue;
-    color: pink;
+    /* color: pink; */
     grid-area: header;
+    padding: var(--padding-2rem) 0;
 }
 
 .header-text {
-    color: aqua;
+    /* color: aqua; */
 }

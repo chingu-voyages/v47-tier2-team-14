@@ -1,4 +1,5 @@
-import styles from "./Dashboard.module.css";
+import styles from './Dashboard.module.css';
+import Todo from '../Todo/Todo';
 
 const Dashboard = () => {
   return (
@@ -7,7 +8,7 @@ const Dashboard = () => {
         <h2>Dashboard section</h2>
       </section>
       <section className={styles['dashboard-content-section']}>
-        <p>Dashboard content</p>
+        <Todo />
       </section>
     </main>
   )
