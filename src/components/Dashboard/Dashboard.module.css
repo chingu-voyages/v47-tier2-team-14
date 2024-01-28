@@ -1,0 +1,6 @@
+.dashboard-section {
+    border: 2px solid green;
+    grid-area: dashboard;
+    min-height: 100dvh;
+    padding-top: var(--padding-2rem);
+}

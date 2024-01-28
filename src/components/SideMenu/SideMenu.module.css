@@ -1,0 +1,9 @@
+aside {
+    border: 2px solid red;
+    grid-area: aside;
+    padding-top: var(--padding-2rem);
+}
+
+.aside-menu-text {
+    /* color: lightblue; */
+}
