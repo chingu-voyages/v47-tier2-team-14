@@ -26,3 +26,5 @@ dist-ssr
 # Vite build
 dist/
 dist-ssr/
+
+*.env
