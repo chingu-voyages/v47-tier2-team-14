@@ -4,8 +4,3 @@
     min-height: 100dvh;
     padding-top: var(--padding-2rem);
 }
-
-.dashboard-content-section__error {
-    color: red;
-    font-size: 2rem;
-}

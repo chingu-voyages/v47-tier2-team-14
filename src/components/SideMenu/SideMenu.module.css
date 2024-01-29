@@ -7,3 +7,8 @@ aside {
 .aside-menu-text {
     /* color: lightblue; */
 }
+
+.dashboard-content-section__error {
+    color: red;
+    font-size: 1.5rem;
+}
