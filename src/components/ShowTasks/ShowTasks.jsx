@@ -52,20 +52,17 @@ const ShowTasks = (apiEndPoint) => {
 
     return (
         <section>
-            <h2 className={styles['show-tasks-text']}> Data: </h2>
-            <section>
-                {apiEndPoint ? (
-                    <>
-                        {tasksCategoryName.length !== 0 ? tasksCategoryName : dataNotAvailable}
+            {apiEndPoint ? (
+                <>
+                    {tasksCategoryName.length !== 0 ? tasksCategoryName : dataNotAvailable}
 
-                        <Tasks>
-                            {showActivityName}
-                            {showTasksArrayList}
-                            {showTasksDays}
-                        </Tasks>
-                    </>
-                ) : <p>No Data</p>}
-            </section>
+                    <Tasks>
+                        {showActivityName}
+                        {/* {showTasksArrayList} */}
+                        {/* {showTasksDays} */}
+                    </Tasks>
+                </>
+            ) : <p>No Data</p>}
         </section>
     )
 }

@@ -22,9 +22,9 @@ const SideMenu = () => {
                     (
                         <>
                             <ShowTasks apiEndPoint={routineActivityQuery} />
-                            {/* <ShowTasks apiEndPoint={studyingQuery} />
+                            <ShowTasks apiEndPoint={studyingQuery} />
                             <ShowTasks apiEndPoint={dailyTasksProjectsQuery} />
-                            <ShowTasks apiEndPoint={chinguQuery} /> */}
+                            <ShowTasks apiEndPoint={chinguQuery} />
                         </>
                     )
                 }
