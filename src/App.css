@@ -1,13 +1,13 @@
 :root {
-  --padding-2rem: 2rem;
+  --padding-2rem: 1rem;
 }
 
-*, 
-*::after, 
+*,
+*::after,
 *::before {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 #root {
@@ -21,7 +21,7 @@
   display: grid;
   grid-template-columns: 25% 1fr;
   grid-template-areas:
-        "aside header"
-        "aside dashboard"
-        "aside footer";
+    "aside header"
+    "aside dashboard"
+    "aside footer";
 }
