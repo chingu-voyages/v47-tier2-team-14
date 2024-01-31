@@ -1,0 +1,51 @@
+.container {
+  position: relative;
+  display: flex;
+  padding: 8px 12px;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1 0 0;
+  align-self: stretch;
+  max-height: 50px;
+  gap: 16px;
+}
+.dropdown-content {
+  position: absolute;
+  left: 5%;
+  top: 100%;
+  background-color: #fff;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.items-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-left: 14px;
+}
+.icon {
+  height: 24px;
+  width: 24px;
+  background: none;
+}
+
+.mylist-button {
+  background: none;
+  border-style: none;
+  padding-left: 10px;
+  cursor: pointer;
+}
+.mylist-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.category-box {
+  padding-left: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}

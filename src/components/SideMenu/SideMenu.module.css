@@ -1,14 +1,114 @@
 aside {
-    border: 2px solid red;
-    grid-area: aside;
-    padding-top: var(--padding-2rem);
-}
-
-.aside-menu-text {
-    /* color: lightblue; */
+  border: 2px solid red;
+  grid-area: aside;
+  display: flex;
+  height: 768px;
+  padding: 0px 16px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  flex-shrink: 0;
+  align-self: stretch;
 }
 
 .dashboard-content-section__error {
-    color: red;
-    font-size: 1.5rem;
+  color: red;
+}
+
+.empty-container {
+  height: 40px;
+}
+
+.container {
+  display: flex;
+  padding: 8px 12px;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1 0 0;
+  align-self: stretch;
+  max-height: 50px;
+}
+
+.container-button {
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  border-radius: 6px;
+  border-style: none;
+  background-color: #fff;
+  cursor: pointer;
+
+  font-family: Arial;
+  font-size: var(--common-font-size);
+}
+
+.container button:hover {
+  display: flex;
+  width: 207px;
+  height: 40px;
+  padding: 8px 12px;
+  align-items: center;
+  align-self: stretch;
+  border-radius: 6px;
+  background: var(--P-100, #dfebff);
+  font-weight: 700;
+  color: #1458dd;
+}
+
+.container button p {
+  padding: 0 24px 0 14px;
+}
+
+.icon {
+  height: 24px;
+  width: 24px;
+}
+
+.task-count {
+  display: flex;
+  width: 34px;
+  padding: 2px 10px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 16px;
+  background: var(--Gray-100, #f3f3f5);
+}
+
+.task-count p {
+  width: 32px;
+  flex-shrink: 0;
+
+  color: var(--Gray-800, #414142);
+  text-align: center;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 166.667% */
+}
+
+.task-box {
+  display: flex;
+  align-items: center;
+  padding-right: 30px;
+}
+
+.apiContentSection {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Space between each task list */
+}
+
+.showTasks {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+}
+
+.showTasksTitle {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
