@@ -1,39 +1,21 @@
 header {
-  border: 1px solid blue;
-  /* color: pink; */
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  border: 2px solid blue;
+  align-self: center;
   grid-area: header;
-  padding: var(--padding-2rem) 0;
+  padding: 20px 0 20px 0;
 }
-.search-bar {
+
+header div {
   display: flex;
-  align-items: center;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 5px;
-  margin-left: 20px;
+  padding: 8px 8px 8px 24px;
 }
 
-.search-bar input {
-  border: none;
-  outline: none;
-  padding: 5px;
-  flex-grow: 1;
+.checklis-icon {
+  width: 112px;
+  height: 24.889px;
+  flex-shrink: 0;
 }
 
-.search-bar button {
-  background: none;
-  border: none;
-  padding: 5px;
-  cursor: pointer;
-}
-
-.notifications-button {
-  border-style: none;
-  width: 30px;
-  height: 30px;
-  margin-right: 20px;
-  cursor: pointer;
+header img {
+  height: 40px;
 }

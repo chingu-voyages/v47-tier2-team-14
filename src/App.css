@@ -1,5 +1,8 @@
 :root {
   --padding-2rem: 1rem;
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
 }
 
 *,
@@ -21,7 +24,7 @@
   display: grid;
   grid-template-columns: 25% 1fr;
   grid-template-areas:
-    "aside header"
+    "header navbar"
     "aside dashboard"
-    "aside footer";
+    "aside dashboard";
 }
