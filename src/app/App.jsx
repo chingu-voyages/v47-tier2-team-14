@@ -7,6 +7,7 @@ import Header from "../components/Header/Header";
 import SideMenu from "../components/SideMenu/SideMenu";
 import Dashboard from "../components/Dashboard/Dashboard";
 import NavBar from "../components/NavBar/NavBar";
+import Footer from "../components/Footer/Footer";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <NavBar />
         <SideMenu />
         <Dashboard />
+        <Footer />
       </div>
     </Provider>
   );
