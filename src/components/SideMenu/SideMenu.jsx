@@ -70,13 +70,10 @@ const SideMenu = () => {
             </p>
           ) : (
             <>
-              <ShowTasks apiEndPoint={routineActivityQuery} title="ROUTINE" />
-              <ShowTasks apiEndPoint={studyingQuery} title="STUDYING" />
-              <ShowTasks
-                apiEndPoint={dailyTasksProjectsQuery}
-                title="DAILY TASKS"
-              />
-              <ShowTasks apiEndPoint={chinguQuery} title="CHINGU" />
+              <ShowTasks apiEndPoint={routineActivityQuery} />
+              <ShowTasks apiEndPoint={studyingQuery} />
+              <ShowTasks apiEndPoint={dailyTasksProjectsQuery} />
+              <ShowTasks apiEndPoint={chinguQuery} />
             </>
           )}
         </section>
