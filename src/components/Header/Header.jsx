@@ -1,11 +1,17 @@
-import styles from './Header.module.css';
+import styles from "./Header.module.css";
 
 const Header = () => {
   return (
-    <header>
-      <h1 className={styles['header-text']}>Chingu Task Manager</h1>
+    <header className={styles.header}>
+      <div>
+        <img
+          src="/checklisLogo.svg"
+          alt="Logo"
+          className={styles["checklis-icon"]}
+        ></img>
+      </div>
     </header>
-  )
-}
+  );
+};
 
 export default Header;
