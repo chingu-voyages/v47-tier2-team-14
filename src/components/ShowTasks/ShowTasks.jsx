@@ -14,8 +14,6 @@ const ShowTasks = (apiEndPoint) => {
   let tasksDays = [];
   let showTasksDays;
 
-  console.log("apiEndPoint: ", apiEndPoint);
-
   if (apiEndPoint) {
     const iterate = (obj) => {
       Object.keys(obj).forEach((key) => {

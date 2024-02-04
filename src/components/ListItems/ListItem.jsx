@@ -1,83 +1,63 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import PropTypes from "prop-types";
+import TaskNav from "../TaskNav";
 
 import styles from "./ListItem.module.css";
 import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
 
-const MyList = () => {
-  const [open, setOpen] = React.useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+import { allData } from "../../data/tasks-example";
 
-  const handleOpen = () => {
-    setOpen(!open);
-  };
+const Dropdown = ({ title, children }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
   const toggleDropdown = () => {
-    setDropdownOpen(!dropdownOpen);
+    setIsOpen(!isOpen);
   };
+
   return (
-    <section>
-      <div className={styles["container"]}>
-        <div className={styles["mylist-box"]}>
-          <img
-            src="/mylistIcon.svg"
-            alt="Logo"
-            className={styles["icon"]}
-          ></img>
+    <div className={styles.container}>
+      <div className={styles.categoryBox}>
+        <div className={styles.mylistBox}>
+          <img src="/elipseIcon.svg" alt="Logo" className={styles.elipseIcon} />
+          <p className={styles.routineText}>{title}</p>
+        </div>
+        <button onClick={toggleDropdown} className={styles.mylistButton}>
+          <img src="/arrowIcon.svg" alt="Toggle" className={styles.icon} />
+        </button>
+      </div>
+      <div className={`${styles.dropdownContent} ${isOpen ? styles.open : ""}`}>
+        {children}
+      </div>
+    </div>
+  );
+};
+
+Dropdown.propTypes = {
+  title: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+};
+
+const MyList = () => {
+  return (
+    <section className={styles.section}>
+      <div className={styles.myListContainer}>
+        <div className={styles.mylistBox}>
+          <img src="/mylistIcon.svg" alt="Logo" className={styles.icon}></img>
 
           <p>My List</p>
         </div>
         <div>
-          <button onClick={handleOpen} className={styles["mylist-button"]}>
-            <AddBoxOutlinedIcon className={styles["icon"]} />
+          <button className={styles.mylistButton}>
+            <AddBoxOutlinedIcon className={styles.icon} />
           </button>
         </div>
       </div>
-      <div className={styles["container"]}>
-        <div className={styles["category-box"]}>
-          <img
-            src="/elipseIcon.svg"
-            alt="Logo"
-            className={styles["elipse-icon"]}
-          ></img>
 
-          <p className={styles["routine-text"]}>ROUTINE</p>
-        </div>
-        <button onClick={toggleDropdown} className={styles["mylist-button"]}>
-          <img src="/arrowIcon.svg" alt="Logo" className={styles["icon"]}></img>
-        </button>
-        {dropdownOpen && (
-          <div className={styles["dropdown-content"]}>
-            <div className={styles["items-container"]}>
-              <img
-                src="/arrow-categoryIcon.svg"
-                alt="Logo"
-                className={styles["icon"]}
-              ></img>
-              <img
-                src="/elipseIcon.svg"
-                alt="Logo"
-                className={styles["elipse-icon"]}
-              ></img>
-
-              <p>Projects</p>
-            </div>
-
-            <div className={styles["items-container"]}>
-              <img
-                src="/arrow-categoryIcon.svg"
-                alt="Logo"
-                className={styles["icon"]}
-              ></img>
-              <img
-                src="/elipseIcon.svg"
-                alt="Logo"
-                className={styles["elipse-icon"]}
-              ></img>
-
-              <p>Blog posts</p>
-            </div>
-          </div>
-        )}
-      </div>
+      {allData.map((data, index) => (
+        <Dropdown title={data.categoryName} key={index}>
+          <TaskNav data={data} />
+        </Dropdown>
+      ))}
     </section>
   );
 };

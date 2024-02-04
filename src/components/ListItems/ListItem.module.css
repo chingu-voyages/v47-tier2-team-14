@@ -1,51 +1,58 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+}
+
 .container {
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 8px 12px;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.myListContainer {
   display: flex;
   padding: 8px 12px;
   justify-content: space-between;
   align-items: center;
-  flex: 1 0 0;
   align-self: stretch;
-  max-height: 50px;
-  gap: 16px;
 }
-.dropdown-content {
-  position: absolute;
-  left: 5%;
-  top: 100%;
+.dropdownContent {
+  display: none;
   background-color: #fff;
   width: 100%;
+  gap: 10px;
+  box-sizing: border-box;
+}
+.dropdownContent.open {
   display: flex;
   flex-direction: column;
-  gap: 10px;
 }
 
-.items-container {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding-left: 14px;
-}
 .icon {
   height: 24px;
   width: 24px;
   background: none;
 }
 
-.mylist-button {
+.mylistButton {
+  align-items: flex-end;
   background: none;
   border-style: none;
-  padding-left: 10px;
   cursor: pointer;
 }
-.mylist-box {
+.mylistBox {
   display: flex;
   align-items: center;
   gap: 12px;
 }
-.category-box {
-  padding-left: 12px;
+.categoryBox {
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: space-between;
+  gap: 20px;
+  padding-left: 10px;
 }

@@ -62,7 +62,7 @@ const SideMenu = () => {
       </div>
       <div className={styles["empty-container"]}></div>
       <MyList />
-      <div>
+      {/* <div>
         <section className={styles.apiContentSection}>
           {isDataSuccess ? (
             <p className={styles["dashboard-content-section__error"]}>
@@ -70,17 +70,14 @@ const SideMenu = () => {
             </p>
           ) : (
             <>
-              <ShowTasks apiEndPoint={routineActivityQuery} title="ROUTINE" />
-              <ShowTasks apiEndPoint={studyingQuery} title="STUDYING" />
-              <ShowTasks
-                apiEndPoint={dailyTasksProjectsQuery}
-                title="DAILY TASKS"
-              />
-              <ShowTasks apiEndPoint={chinguQuery} title="CHINGU" />
+              <ShowTasks apiEndPoint={routineActivityQuery} />
+              <ShowTasks apiEndPoint={studyingQuery} />
+              <ShowTasks apiEndPoint={dailyTasksProjectsQuery} />
+              <ShowTasks apiEndPoint={chinguQuery} />
             </>
           )}
         </section>
-      </div>
+      </div> */}
       <Footer />
     </aside>
   );
