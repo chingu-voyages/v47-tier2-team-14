@@ -62,7 +62,7 @@ const SideMenu = () => {
       </div>
       <div className={styles["empty-container"]}></div>
       <MyList />
-      <div>
+      {/* <div>
         <section className={styles.apiContentSection}>
           {isDataSuccess ? (
             <p className={styles["dashboard-content-section__error"]}>
@@ -77,7 +77,7 @@ const SideMenu = () => {
             </>
           )}
         </section>
-      </div>
+      </div> */}
       <Footer />
     </aside>
   );
