@@ -26,5 +26,5 @@
   grid-template-areas:
     "header navbar"
     "aside dashboard"
-    "aside dashboard";
+    "footer dashboard";
 }

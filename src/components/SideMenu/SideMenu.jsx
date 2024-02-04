@@ -78,7 +78,6 @@ const SideMenu = () => {
           )}
         </section>
       </div> */}
-      <Footer />
     </aside>
   );
 };
