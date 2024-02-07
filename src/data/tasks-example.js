@@ -80,7 +80,7 @@ export const allData = [
     ],
   },
   {
-    categoryName: "DAILY TASKS PROJECT",
+    categoryName: "DAILY TASKS",
     activityTypes: [
       {
         activityName: "Backlog",
@@ -152,3 +152,11 @@ export const allData = [
     ],
   },
 ];
+
+// Retrieve the serialized data from localStorage
+const serializedData = localStorage.getItem("tasksData");
+
+// Deserialize the data back into a JavaScript object
+const tasksData = JSON.parse(serializedData);
+
+console.log(tasksData);

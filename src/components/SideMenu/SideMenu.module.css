@@ -37,12 +37,12 @@ aside {
   border-style: none;
   background-color: #fff;
   cursor: pointer;
-
+  text-decoration: none;
   font-family: Arial;
   font-size: var(--common-font-size);
 }
 
-.container button:hover {
+.container-button:hover {
   display: flex;
   width: 207px;
   height: 40px;
@@ -55,7 +55,7 @@ aside {
   color: #1458dd;
 }
 
-.container button p {
+.container-button p {
   padding: 0 24px 0 14px;
 }
 
