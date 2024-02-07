@@ -1,0 +1,12 @@
+.card {
+	font-size: 0.7em;
+	display: block;
+	border: 1px solid black;
+	margin: auto;
+	width: 168px;
+	height: 144px;
+	padding: 24px, 32px, 24px, 32px;
+	border-radius: 8px;
+	gap: 16px;
+	opacity: 0.6px;
+}
