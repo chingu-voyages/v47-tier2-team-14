@@ -1,6 +1,19 @@
 .dashboard-section {
-    border: 2px solid green;
-    grid-area: dashboard;
-    min-height: 100dvh;
-    padding-top: var(--padding-2rem);
+	border: 2px solid green;
+	grid-area: dashboard;
+	min-height: 100dvh;
+	padding-top: var(--padding-2rem);
 }
+
+.cardholder {
+	justify-content: space-between;
+	display: flex;
+	width: 968px;
+	height: 144px;
+	top: 174px;
+	left: 320px;
+	gap: 32px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
