@@ -1,7 +1,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-import TaskNav from "../TaskNav";
-
+import TaskNav from "../TaskNav/TaskNav";
+import TaskForm from "../TaskForm/TaskForm";
 import styles from "./ListItem.module.css";
 import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
 
@@ -38,6 +38,23 @@ Dropdown.propTypes = {
 };
 
 const MyList = () => {
+  const [showForm, setShowForm] = useState(false);
+  const [data, setData] = useState(() => {
+    // Initialize data from local storage if available
+    const localData = localStorage.getItem("tasksData");
+    return localData ? JSON.parse(localData) : allData;
+  });
+
+  const handleSave = (newData) => {
+    const updatedData = [...data, newData];
+    setData(updatedData);
+    localStorage.setItem("tasksData", JSON.stringify(updatedData));
+    setShowForm(false); // Hide form after save
+  };
+
+  const handleFormCancel = () => {
+    setShowForm(false);
+  };
   return (
     <section className={styles.section}>
       <div className={styles.myListContainer}>
@@ -47,7 +64,10 @@ const MyList = () => {
           <p>My List</p>
         </div>
         <div>
-          <button className={styles.mylistButton}>
+          <button
+            onClick={() => setShowForm(!showForm)}
+            className={styles.mylistButton}
+          >
             <AddBoxOutlinedIcon className={styles.icon} />
           </button>
         </div>
@@ -56,6 +76,12 @@ const MyList = () => {
       {allData.map((data, index) => (
         <Dropdown title={data.categoryName} key={index}>
           <TaskNav data={data} />
+        </Dropdown>
+      ))}
+      {showForm && <TaskForm onSave={handleSave} onCancel={handleFormCancel} />}
+      {data.map((item, index) => (
+        <Dropdown title={item.categoryName} key={index}>
+          <TaskNav data={item} />
         </Dropdown>
       ))}
     </section>

@@ -1,34 +1,34 @@
 import styles from "./SideMenu.module.css";
-import Footer from "../Footer/Footer.jsx";
-import ShowTasks from "../ShowTasks/ShowTasks";
+// import ShowTasks from "../ShowTasks/ShowTasks";
 import MyList from "../ListItems/ListItem.jsx";
+import { Link } from "react-router-dom";
 
-import {
-  useGetRoutineActivitiesQuery,
-  useGetStudyingQuery,
-  useGetDailyTasksProjectsQuery,
-  useGetChinguQuery,
-} from "../../redux/api.js";
+// import {
+//   useGetRoutineActivitiesQuery,
+//   useGetStudyingQuery,
+//   useGetDailyTasksProjectsQuery,
+//   useGetChinguQuery,
+// } from "../../redux/api.js";
 
 const SideMenu = () => {
-  const {
-    data: routineActivityQuery,
-    isSuccess: isRoutineActivityQuerySuccess,
-  } = useGetRoutineActivitiesQuery();
-  const { data: studyingQuery, isSuccess: isStudyingQuerySuccess } =
-    useGetStudyingQuery();
-  const {
-    data: dailyTasksProjectsQuery,
-    isSuccess: isDailyTasksProjectsQuerySuccess,
-  } = useGetDailyTasksProjectsQuery();
-  const { data: chinguQuery, isSuccess: isChinguQuerySuccess } =
-    useGetChinguQuery();
+  // const {
+  //   data: routineActivityQuery,
+  //   isSuccess: isRoutineActivityQuerySuccess,
+  // } = useGetRoutineActivitiesQuery();
+  // const { data: studyingQuery, isSuccess: isStudyingQuerySuccess } =
+  //   useGetStudyingQuery();
+  // const {
+  //   data: dailyTasksProjectsQuery,
+  //   isSuccess: isDailyTasksProjectsQuerySuccess,
+  // } = useGetDailyTasksProjectsQuery();
+  // const { data: chinguQuery, isSuccess: isChinguQuerySuccess } =
+  //   useGetChinguQuery();
 
-  let isDataSuccess =
-    !isRoutineActivityQuerySuccess ||
-    !isStudyingQuerySuccess ||
-    !isDailyTasksProjectsQuerySuccess ||
-    !isChinguQuerySuccess;
+  // let isDataSuccess =
+  //   !isRoutineActivityQuerySuccess ||
+  //   !isStudyingQuerySuccess ||
+  //   !isDailyTasksProjectsQuerySuccess ||
+  //   !isChinguQuerySuccess;
 
   return (
     <aside>
@@ -46,7 +46,7 @@ const SideMenu = () => {
       </div>
 
       <div className={styles["container"]}>
-        <button className={styles["container-button"]}>
+        <Link to="/taskpage" className={styles["container-button"]}>
           <div className={styles["task-box"]}>
             <img
               src="/taskIcon.svg"
@@ -55,10 +55,11 @@ const SideMenu = () => {
             ></img>
             <p>Tasks</p>
           </div>
+
           <div className={styles["task-count"]}>
             <p>16</p>
           </div>
-        </button>
+        </Link>
       </div>
       <div className={styles["empty-container"]}></div>
       <MyList />

@@ -1,0 +1,54 @@
+.TaskPageContainer {
+  grid-area: dashboard;
+  background-color: rgb(247, 247, 240);
+}
+.TaskPageNav {
+  display: flex;
+  justify-content: space-between;
+}
+.TaskPageBody {
+  border-radius: 6px;
+  background-color: #fff;
+  padding: 20px;
+}
+.TaskPageLeftNav {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  padding: 20px 0 20px 50px;
+}
+
+.TaskPageLeftNavDiv {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  cursor: pointer;
+}
+.TaskPageLeftNavDiv:hover {
+  font-weight: 600;
+  color: #1458dd;
+}
+.TaskPageNavIcon {
+  width: 24px;
+  height: 24px;
+}
+.TaskPageNavRight {
+  padding: 20px 50px 20px 0;
+  text-decoration: none;
+}
+.TaskPageNavRight button {
+  align-items: center;
+  display: flex;
+  background-color: #1458dd;
+  color: #fff;
+
+  border-radius: 6px;
+  border-style: none;
+  padding: 8px 15px;
+  cursor: pointer;
+  gap: 8px;
+}
+
+.TaskPageBodyNav {
+  display: flex;
+}
