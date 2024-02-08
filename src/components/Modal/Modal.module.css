@@ -1,0 +1,62 @@
+.overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.7);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.modal {
+	background-color: white;
+	padding: 20px;
+	border-radius: 8px;
+	position: relative;
+	width: 80%;
+	max-width: 500px;
+}
+
+.closeButton {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	background-color: transparent !important;
+	color: red !important;
+	border: 0;
+	font-size: 18px;
+	font-weight: bolder;
+	cursor: pointer;
+}
+
+/* .modal-overlay {
+	position: relative;
+}
+
+.modal {
+	position: absolute;
+	max-width: 350px;
+	padding-top: 36px;
+	padding-bottom: 40px;
+	border: 0;
+	border-radius: 10px;
+	box-shadow: hsl(0 0% 0% / 10%) 0 0 0.5rem 0.25rem;
+	top: 250px;
+	left: 450px;
+	z-index: 9999;
+}
+
+.modal::backdrop {
+	background: hsl(0 0% 0% / 50%);
+}
+
+.modal-close-btn {
+	display: block;
+	color: red;
+}
+
+.modal-content {
+	font-size: 14px;
+} */
