@@ -10,6 +10,7 @@
   border-radius: 6px;
   background-color: #fff;
   padding: 20px;
+  overflow-y: scroll;
 }
 .TaskPageLeftNav {
   display: flex;
@@ -51,4 +52,40 @@
 
 .TaskPageBodyNav {
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 40px;
+}
+.TaskList {
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+}
+.elipseIcon {
+  height: 15px;
+  width: 15px;
+}
+.activityNameDiv {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  font-weight: 700;
+  font-size: 20px;
+}
+.TaskDetailsDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 16px;
+  padding: 20px;
+  gap: 12px;
+}
+.BreakLine {
+  border-style: dashed;
+  border: 2px solid grey;
+}
+.days {
+  font-size: 14px;
+  font-variant: small-caps;
 }
