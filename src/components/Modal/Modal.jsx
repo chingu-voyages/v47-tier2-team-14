@@ -1,4 +1,3 @@
-// import React, { useState } from 'react'
 import styles from './Modal.module.css'
 
 const Modal = ({ children, onClose }) => {

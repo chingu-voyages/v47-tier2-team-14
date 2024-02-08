@@ -54,7 +54,7 @@
 	display: flex;
 }
 
-.dialog {
+/* .dialog {
 	max-width: 350px;
 	padding-top: 36px;
 	padding-bottom: 40px;
@@ -92,5 +92,27 @@
 	position: absolute;
 	left: 1.75em;
 	bottom: 0.25em;
+	background-color: red !important;
+} */
+
+.modalTitle {
+	padding-top: 14px;
+	padding-bottom: 12px;
+}
+
+.modalBody {
+	padding-bottom: 40px;
+}
+
+.modalSaveBtn {
+	position: absolute;
+	right: 20px;
+	bottom: 10px;
+}
+
+.modalDeleteBtn {
+	position: absolute;
+	left: 20px;
+	bottom: 10px;
 	background-color: red !important;
 }
