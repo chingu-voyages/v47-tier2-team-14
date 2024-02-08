@@ -1,5 +1,18 @@
+// import { useState } from "react";
+
 import styles from "../TaskPage/TaskPage.module.css";
 import { Link } from "react-router-dom";
+
+import { allData } from "../../data/tasks-example";
+import CategoryType from "../../components/CategoryType/CategoryType";
+
+const date = new Date();
+let day = date.getDate();
+let month = date.getMonth() + 1;
+let year = date.getFullYear();
+
+let currentDate = `${month}
+ . ${day} .${year}`;
 
 const TaskPage = () => {
   return (
@@ -37,20 +50,22 @@ const TaskPage = () => {
       </div>
       <div className={styles.TaskPageBody}>
         <div className={styles.TaskPageBodyNav}>
-          <div className={styles.TaskPageBodyNav}>
-            <img
-              src="./angle-small-left.svg"
-              alt="Logo"
-              className={styles.TaskPageNavIcon}
-            ></img>
-            <p>Jan 01, 2024</p>
-            <img
-              src="./angle-small-right.svg"
-              alt="Logo"
-              className={styles.TaskPageNavIcon}
-            ></img>
-          </div>
+          <img
+            src="./angle-small-left.svg"
+            alt="Logo"
+            className={styles.TaskPageNavIcon}
+          ></img>
+          <p>{currentDate}</p>
+          <img
+            src="./angle-small-right.svg"
+            alt="Logo"
+            className={styles.TaskPageNavIcon}
+          ></img>
         </div>
+
+        {allData.map((data, index) => (
+          <CategoryType data={data} key={index} id={index} />
+        ))}
       </div>
     </div>
   );
