@@ -9,7 +9,7 @@ import SideMenu from "../components/SideMenu/SideMenu";
 import Dashboard from "../components/Dashboard/Dashboard";
 import NavBar from "../components/NavBar/NavBar";
 import Footer from "../components/Footer/Footer";
-
+import Calender from "../components/Calendar/Calendar";
 import TaskPage from "../components/TaskPage/TaskPage";
 
 function App() {
@@ -21,8 +21,10 @@ function App() {
 
         <Router>
           <Routes>
-            <Route path="/" exact={<Dashboard />} />
+            <Route path="/" element={<Dashboard />} />
             <Route path="/taskpage" element={<TaskPage />} />
+
+            <Route path="/calender" element={<Calender />} />
           </Routes>
           <SideMenu />
         </Router>

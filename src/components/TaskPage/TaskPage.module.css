@@ -7,10 +7,17 @@
   justify-content: space-between;
 }
 .TaskPageBody {
-  border-radius: 6px;
+  border-radius: 10px;
   background-color: #fff;
-  padding: 20px;
+  padding: 40px;
   overflow-y: scroll;
+  margin: 40px;
+  max-height: 700px;
+}
+.TaskPageBodyNav {
+  color: #1458dd;
+  font-weight: 600;
+  gap: 20px;
 }
 .TaskPageLeftNav {
   display: flex;
@@ -24,14 +31,27 @@
   gap: 8px;
   align-items: center;
   cursor: pointer;
+  text-decoration: none;
+  color: #3f3e3e;
 }
 .TaskPageLeftNavDiv:hover {
   font-weight: 600;
   color: #1458dd;
 }
+.BoldLink {
+  color: #1458dd;
+  border-bottom: 2px solid #1458dd;
+  font-weight: 700;
+  text-decoration: none;
+}
+.BoldLink img {
+  filter: brightness(0) saturate(100%) invert(39%) sepia(95%) saturate(7487%)
+    hue-rotate(203deg) brightness(97%) contrast(119%);
+}
 .TaskPageNavIcon {
   width: 24px;
   height: 24px;
+  color: white;
 }
 .TaskPageNavRight {
   padding: 20px 50px 20px 0;
@@ -61,31 +81,35 @@
   flex-direction: column;
   padding-left: 20px;
 }
-.elipseIcon {
-  height: 15px;
-  width: 15px;
+.dialog {
+  max-width: 350px;
+  padding-top: 36px;
+  padding-bottom: 40px;
+
+  @@ -93,4 +93,26 @@
+	left: 1.75em;
+  bottom: 0.25em;
+  background-color: red !important;
 }
-.activityNameDiv {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-  align-items: center;
-  font-weight: 700;
-  font-size: 20px;
+
+.modalTitle {
+  padding-top: 14px;
+  padding-bottom: 12px;
 }
-.TaskDetailsDiv {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  font-size: 16px;
-  padding: 20px;
-  gap: 12px;
+
+.modalBody {
+  padding-bottom: 40px;
 }
-.BreakLine {
-  border-style: dashed;
-  border: 2px solid grey;
+
+.modalSaveBtn {
+  position: absolute;
+  right: 20px;
+  bottom: 10px;
 }
-.days {
-  font-size: 14px;
-  font-variant: small-caps;
+
+.modalDeleteBtn {
+  position: absolute;
+  left: 20px;
+  bottom: 10px;
+  background-color: red !important;
 }

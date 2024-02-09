@@ -28,8 +28,19 @@ aside {
   align-self: stretch;
   max-height: 50px;
 }
+.BoldLink {
+  color: #1458dd;
+  font-weight: 700;
+  text-decoration: none;
+  background: var(--P-100, #dfebff);
+  border-radius: 6px;
+}
+.BoldIcon {
+  filter: brightness(0) saturate(100%) invert(39%) sepia(95%) saturate(7487%)
+    hue-rotate(203deg) brightness(97%) contrast(119%);
+}
 
-.container-button {
+.containerButton {
   display: flex;
   align-items: center;
   align-self: stretch;
@@ -38,11 +49,9 @@ aside {
   background-color: #fff;
   cursor: pointer;
   text-decoration: none;
-  font-family: Arial;
-  font-size: var(--common-font-size);
 }
 
-.container-button:hover {
+.containerButton:hover {
   display: flex;
   width: 207px;
   height: 40px;
@@ -55,7 +64,7 @@ aside {
   color: #1458dd;
 }
 
-.container-button p {
+.containerButton p {
   padding: 0 24px 0 14px;
 }
 
