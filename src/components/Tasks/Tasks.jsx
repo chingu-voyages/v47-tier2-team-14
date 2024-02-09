@@ -6,15 +6,17 @@ const Tasks = ({ data }) => {
   const [isCompleted, setIsCompleted] = useState(data.isCompleted);
 
   return (
-    <div className={styles.TaskDetailsDiv}>
+    <div className={styles.TaskDetails}>
       <input
         type="checkbox"
         checked={isCompleted}
         onChange={(e) => setIsCompleted(e.target.checked)}
       ></input>
-      <p> {data.taskName}</p>
-      <p> {data.taskDescription}</p>
-      <p> {data.days}</p>
+      <div className={styles.TaskDetailsDiv}>
+        <p> {data.taskName}</p>
+        <p> {data.taskDescription}</p>
+        <p className={styles.TaskDays}> {data.days}</p>
+      </div>
     </div>
   );
 };

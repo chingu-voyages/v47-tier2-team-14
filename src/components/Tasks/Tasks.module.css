@@ -1,6 +1,19 @@
+.TaskDetails {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 25px;
+  align-items: center;
+  padding: 0 0 20px 2px;
+  border-bottom: 1px solid grey;
+}
 .TaskDetailsDiv {
   display: flex;
-  flex-direction: column;
   align-items: flex-start;
+  flex-direction: column;
+  font-size: 18px;
   gap: 12px;
+}
+.TaskDays {
+  font-size: 16px;
 }

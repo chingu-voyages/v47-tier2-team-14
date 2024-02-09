@@ -1,5 +1,6 @@
 import styles from "./ActivityDisplay.module.css";
 import Tasks from "../Tasks/Tasks";
+import PropTypes from "prop-types";
 
 const ActivityDisplay = ({ data }) => {
   return (
@@ -14,6 +15,13 @@ const ActivityDisplay = ({ data }) => {
       ))}
     </div>
   );
+};
+
+ActivityDisplay.propTypes = {
+  data: PropTypes.shape({
+    activityName: PropTypes.string.isRequired,
+    Tasks: PropTypes.string,
+  }).isRequired,
 };
 
 export default ActivityDisplay;
