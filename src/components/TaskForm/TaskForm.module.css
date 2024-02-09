@@ -1,0 +1,68 @@
+.mainForm {
+	display: flex;
+	justify-content: space-around;
+}
+
+.categoryName {
+	display: table-caption;
+	padding-bottom: 5px;
+}
+
+.categoryLabel {
+	font-weight: bolder;
+}
+
+.activityName {
+	display: table-caption;
+	padding-bottom: 5px;
+}
+
+.activityLabel {
+	font-weight: bolder;
+}
+
+.taskName {
+	display: table-caption;
+	padding-bottom: 5px;
+}
+
+.taskLabel {
+	font-weight: bolder;
+}
+
+.taskDesc {
+	display: table-caption;
+	padding-bottom: 5px;
+}
+
+.labelDesc {
+	font-weight: bolder;
+}
+
+.dayName {
+	display: table-caption;
+	padding-bottom: 5px;
+}
+
+.dayLabel {
+	font-weight: bolder;
+}
+
+.addButtonContainer {
+	display: flex;
+	justify-content: space-around;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.saveBtn {
+	padding-block: 5px;
+	padding-inline: 7px;
+	font-weight: bolder;
+}
+
+.cancelBtn {
+	padding-block: 5px;
+	padding-inline: 7px;
+	font-weight: bolder;
+}
