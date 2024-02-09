@@ -32,6 +32,7 @@
 .TaskPageNavIcon {
   width: 24px;
   height: 24px;
+  color: white;
 }
 .TaskPageNavRight {
   padding: 20px 50px 20px 0;
@@ -88,4 +89,66 @@
 .days {
   font-size: 14px;
   font-variant: small-caps;
+}
+
+.dialog {
+  max-width: 350px;
+  padding-top: 36px;
+  padding-bottom: 40px;
+  border: 0;
+  border-radius: 10px;
+  box-shadow: hsl(0 0% 0% / 10%) 0 0 0.5rem 0.25rem;
+  position: relative;
+  top: 250px;
+  left: 450px;
+  z-index: 9999;
+}
+
+.dialog::backdrop {
+  background: hsl(0 0% 0% / 50%);
+}
+
+.dialogCloseBtn {
+  font-size: 16px;
+  font-weight: bold;
+  position: absolute;
+  top: 0.25em;
+  right: 0.25em;
+  padding: 14px;
+  background-color: transparent !important;
+  color: red !important;
+}
+
+.dialogSaveBtn {
+  position: absolute;
+  right: 1.75em;
+  bottom: 0.25em;
+}
+
+.dialogDeleteBtn {
+  position: absolute;
+  left: 1.75em;
+  bottom: 0.25em;
+  background-color: red !important;
+}
+*/ .modalTitle {
+  padding-top: 14px;
+  padding-bottom: 12px;
+}
+
+.modalBody {
+  padding-bottom: 40px;
+}
+
+.modalSaveBtn {
+  position: absolute;
+  right: 20px;
+  bottom: 10px;
+}
+
+.modalDeleteBtn {
+  position: absolute;
+  left: 20px;
+  bottom: 10px;
+  background-color: red !important;
 }

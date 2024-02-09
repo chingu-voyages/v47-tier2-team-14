@@ -1,7 +1,10 @@
 // import { useState } from "react";
 
 import styles from "../TaskPage/TaskPage.module.css";
-import { Link } from "react-router-dom";
+
+import Modal from "../Modal/Modal";
+import { useState } from "react";
+import AddIcon from "@mui/icons-material/Add";
 
 import { allData } from "../../data/tasks-example";
 import CategoryType from "../../components/CategoryType/CategoryType";
@@ -15,6 +18,8 @@ let currentDate = `${month}
  . ${day} .${year}`;
 
 const TaskPage = () => {
+  const [isModalOpen, setModalOpen] = useState(false);
+
   return (
     <div className={styles.TaskPageContainer}>
       <div className={styles.TaskPageNav}>
@@ -37,17 +42,27 @@ const TaskPage = () => {
           </div>
         </div>
 
-        <Link className={styles.TaskPageNavRight}>
-          <button>
-            <img
-              src="./plus-small.svg"
-              alt="Logo"
-              className={styles.TaskPageNavIcon}
-            ></img>
+        {/* NEW TASK BUTTON START */}
+        <div className={styles.TaskPageNavRight}>
+          <button onClick={() => setModalOpen(true)}>
+            <AddIcon />
             <p> New Task</p>
           </button>
-        </Link>
+
+          {isModalOpen && (
+            <Modal onClose={() => setModalOpen(false)}>
+              {/* MODAL BODY START */}
+              <h2 className={styles.modalTitle}>Add / Edit Task</h2>
+              <p className={styles.modalBody}>This is the modal content!</p>
+              <button className={styles.modalSaveBtn}>Save</button>
+              <button className={styles.modalDeleteBtn}>Delete</button>
+              {/* MODAL BODY END */}
+            </Modal>
+          )}
+        </div>
       </div>
+      {/* NEW TASK BUTTON END */}
+
       <div className={styles.TaskPageBody}>
         <div className={styles.TaskPageBodyNav}>
           <img
