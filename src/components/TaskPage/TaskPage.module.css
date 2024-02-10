@@ -7,6 +7,17 @@
 	justify-content: space-between;
 }
 .TaskPageBody {
+  border-radius: 10px;
+  background-color: #fff;
+  padding: 40px;
+  overflow-y: scroll;
+  margin: 40px;
+  max-height: 700px;
+}
+.TaskPageBodyNav {
+  color: #1458dd;
+  font-weight: 600;
+  gap: 20px;
 	border-radius: 6px;
 	background-color: #fff;
 	padding: 20px;
@@ -19,19 +30,31 @@
 }
 
 .TaskPageLeftNavDiv {
-	display: flex;
-	gap: 8px;
-	align-items: center;
-	cursor: pointer;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+  color: #3f3e3e;
 }
 .TaskPageLeftNavDiv:hover {
 	font-weight: 600;
 	color: #1458dd;
 }
+.BoldLink {
+  color: #1458dd;
+  border-bottom: 2px solid #1458dd;
+  font-weight: 700;
+  text-decoration: none;
+}
+.BoldLink img {
+  filter: brightness(0) saturate(100%) invert(39%) sepia(95%) saturate(7487%)
+    hue-rotate(203deg) brightness(97%) contrast(119%);
+}
 .TaskPageNavIcon {
-	width: 24px;
-	height: 24px;
-	color: white;
+  width: 24px;
+  height: 24px;
+  color: white;
 }
 .TaskPageNavRight {
 	padding: 20px 50px 20px 0;
@@ -51,68 +74,35 @@
 }
 
 .TaskPageBodyNav {
-	display: flex;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 40px;
 }
-
-/* .dialog {
-	max-width: 350px;
-	padding-top: 36px;
-	padding-bottom: 40px;
-	border: 0;
-	border-radius: 10px;
-	box-shadow: hsl(0 0% 0% / 10%) 0 0 0.5rem 0.25rem;
-	position: relative;
-	top: 250px;
-	left: 450px;
-	z-index: 9999;
+.TaskList {
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
 }
-
-.dialog::backdrop {
-	background: hsl(0 0% 0% / 50%);
-}
-
-.dialogCloseBtn {
-	font-size: 16px;
-	font-weight: bold;
-	position: absolute;
-	top: 0.25em;
-	right: 0.25em;
-	padding: 14px;
-	background-color: transparent !important;
-	color: red !important;
-}
-
-.dialogSaveBtn {
-	position: absolute;
-	right: 1.75em;
-	bottom: 0.25em;
-}
-
-.dialogDeleteBtn {
-	position: absolute;
-	left: 1.75em;
-	bottom: 0.25em;
-	background-color: red !important;
-} */
 
 .modalTitle {
-	padding-top: 14px;
-	padding-bottom: 12px;
+  padding-top: 14px;
+  padding-bottom: 12px;
 }
 
 .modalBody {
-	padding-bottom: 40px;
+  padding-bottom: 40px;
 }
 
 .modalSaveBtn {
-	position: absolute;
-	right: 20px;
-	bottom: 10px;
+  position: absolute;
+  right: 20px;
+  bottom: 10px;
 }
 
 .modalDeleteBtn {
-	position: absolute;
-	left: 20px;
-	bottom: 10px;
-	background-color: red !important;
+  position: absolute;
+  left: 20px;
+  bottom: 10px;
+  background-color: red !important;
 }

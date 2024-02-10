@@ -1,0 +1,20 @@
+.activityDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-bottom: 20px;
+}
+
+.elipseIcon {
+  width: 15px;
+  height: 15px;
+}
+
+.activityNameDiv {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 20px;
+}
