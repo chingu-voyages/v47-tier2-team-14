@@ -1,0 +1,57 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 12px;
+  align-items: flex-start;
+  gap: 16px;
+}
+.categoryBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-left: 10px;
+  width: 100%;
+}
+.mylistBox {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.mylistButton {
+  align-items: flex-end;
+  background: none;
+  border-style: none;
+  cursor: pointer;
+}
+.deleteButton {
+  opacity: 0;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: red; /* Customize as needed */
+  position: relative;
+  left: 10px; /* Adjust based on your layout */
+  top: 8px;
+  transform: translateY(-50%);
+}
+
+.deleteButton:hover {
+  display: flex;
+  opacity: 1;
+}
+.arrowIcon {
+  display: flex;
+  align-items: flex-end;
+}
+.dropdownContent {
+  display: none;
+  background-color: #fff;
+  width: 100%;
+  gap: 10px;
+  box-sizing: border-box;
+}
+.dropdownContent.open {
+  display: flex;
+  flex-direction: column;
+}
