@@ -1,6 +1,8 @@
 .card {
-	font-size: 0.7em;
-	display: block;
+	font-size: 1.2em;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 	border: 1px solid black;
 	margin: auto;
 	width: 168px;
@@ -10,3 +12,17 @@
 	gap: 16px;
 	opacity: 0.6px;
 }
+
+.card h2 {
+	text-align: start;
+	margin: 0 auto 0 0;
+	padding-left: 15px;
+	align-self: flex-end;
+}
+
+.card h4 {
+	align-self: flex-start;
+	text-align: center;
+	margin: 15px auto 0;
+}
+
