@@ -6,6 +6,8 @@ import { Link, useLocation } from "react-router-dom";
 import { allData } from "../../data/tasks-example";
 import CategoryType from "../../components/CategoryType/CategoryType";
 
+import TaskForm from "../TaskForm/TaskForm";
+
 const date = new Date();
 let day = date.getDate();
 
@@ -33,6 +35,19 @@ const TaskPage = () => {
   const location = useLocation();
   const isListPage = location.pathname === "/taskpage";
   const isCalenderPage = location.pathname === "/calender";
+
+  const [data, setData] = useState(() => {
+    // Initialize data from local storage if available
+    const localData = localStorage.getItem("tasksData");
+    return localData ? JSON.parse(localData) : allData;
+  });
+
+  //save new Tasks to local Storage and render it to SideMenu
+  const handleSave = (newData) => {
+    const updatedData = [...data, newData];
+    setData(updatedData);
+    localStorage.setItem("tasksData", JSON.stringify(updatedData));
+  };
 
   return (
     <div className={styles.TaskPageContainer}>
@@ -80,10 +95,11 @@ const TaskPage = () => {
           {isModalOpen && (
             <Modal onClose={() => setModalOpen(false)}>
               {/* MODAL BODY START */}
-              <h2 className={styles.modalTitle}>Add / Edit Task</h2>
-              <p className={styles.modalBody}>This is the modal content!</p>
-              <button className={styles.modalSaveBtn}>Save</button>
-              <button className={styles.modalDeleteBtn}>Delete</button>
+              <h2 className={styles.modalTitle}>Add A New Task</h2>
+
+              <TaskForm onSave={handleSave} />
+
+              {/* <button className={styles.modalDeleteBtn}>Delete</button> */}
               {/* MODAL BODY END */}
             </Modal>
           )}
@@ -108,6 +124,9 @@ const TaskPage = () => {
 
         {allData.map((data, index) => (
           <CategoryType data={data} key={index} id={index} />
+        ))}
+        {data.map((item, index) => (
+          <CategoryType data={item} key={index} id={index} />
         ))}
       </div>
     </div>
