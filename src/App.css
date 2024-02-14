@@ -1,30 +1,31 @@
 :root {
-	--padding-2rem: 1rem;
-	font-family: 'Inter', sans-serif;
-	font-size: 18px;
-	font-weight: 500;
+  --padding-2rem: 1rem;
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  background-color: #fff;
 }
 
 *,
 *::after,
 *::before {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 #root {
-	/* max-width: 1280px; */
-	margin: 0 auto;
-	/* padding: 2rem; */
-	text-align: center;
+  /* max-width: 1280px; */
+  margin: 0 auto;
+  /* padding: 2rem; */
+  text-align: center;
 }
 
 .app-container {
-	display: grid;
-	grid-template-columns: 240px 1fr;
-	grid-template-areas:
-		'header navbar'
-		'aside dashboard'
-		'footer dashboard';
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  grid-template-areas:
+    "header navbar"
+    "aside dashboard"
+    "footer dashboard";
 }

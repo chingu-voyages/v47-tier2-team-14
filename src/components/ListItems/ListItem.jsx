@@ -1,118 +1,98 @@
-import { useState } from 'react'
-import PropTypes from 'prop-types'
-import TaskNav from '../TaskNav/TaskNav'
-import TaskForm from '../TaskForm/TaskForm'
-import styles from './ListItem.module.css'
-import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined'
+import { useState } from "react";
+// import PropTypes from "prop-types";
+import TaskNav from "../TaskNav/TaskNav";
+import TaskForm from "../TaskForm/TaskForm";
+import Modal from "../Modal/Modal";
+import Dropdown from "../Dropdown/Dropdown";
+import styles from "./ListItem.module.css";
+import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
 
-import { allData } from '../../data/tasks-example'
-
-const Dropdown = ({ title, children }) => {
-	const [isOpen, setIsOpen] = useState(false)
-
-	const toggleDropdown = () => {
-		setIsOpen(!isOpen)
-	}
-
-	return (
-		<div className={styles.container}>
-			<div className={styles.categoryBox}>
-				<div className={styles.mylistBox}>
-					<img
-						src='/elipseIcon.svg'
-						alt='Logo'
-						className={styles.elipseIcon}
-					/>
-					<p className={styles.routineText}>{title}</p>
-				</div>
-				<button
-					onClick={toggleDropdown}
-					className={styles.mylistButton}
-				>
-					<img
-						src='/arrowIcon.svg'
-						alt='Toggle'
-						className={styles.icon}
-					/>
-				</button>
-			</div>
-			<div className={`${styles.dropdownContent} ${isOpen ? styles.open : ''}`}>
-				{children}
-			</div>
-		</div>
-	)
-}
-
-Dropdown.propTypes = {
-	title: PropTypes.string.isRequired,
-	children: PropTypes.node.isRequired,
-}
+import { allData } from "../../data/tasks-example";
 
 const MyList = () => {
-	const [showForm, setShowForm] = useState(false)
-	const [data, setData] = useState(() => {
-		// Initialize data from local storage if available
-		const localData = localStorage.getItem('tasksData')
-		return localData ? JSON.parse(localData) : allData
-	})
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [data, setData] = useState(() => {
+    // Initialize data from local storage if available
+    const localData = localStorage.getItem("tasksData");
+    return localData ? JSON.parse(localData) : allData;
+  });
 
-	const handleSave = (newData) => {
-		const updatedData = [...data, newData]
-		setData(updatedData)
-		localStorage.setItem('tasksData', JSON.stringify(updatedData))
-		setShowForm(false) // Hide form after save
-	}
+  // Saves new Task to localStorage
+  const handleSave = (newData) => {
+    const updatedData = [...data, newData];
+    setData(updatedData);
+    localStorage.setItem("tasksData", JSON.stringify(updatedData));
+  };
 
-	const handleFormCancel = () => {
-		setShowForm(false)
-	}
-	return (
-		<section className={styles.section}>
-			<div className={styles.myListContainer}>
-				<div className={styles.mylistBox}>
-					<img
-						src='/mylistIcon.svg'
-						alt='Logo'
-						className={styles.icon}
-					></img>
+  // Deletes a Task from localStorage
+  const handleDelete = (categoryName) => {
+    const filteredData = data.filter(
+      (item) => item.categoryName !== categoryName
+    );
+    setData(filteredData);
+    localStorage.setItem("tasksData", JSON.stringify(filteredData));
+  };
 
-					<p>My List</p>
-				</div>
-				<div>
-					<button
-						onClick={() => setShowForm(!showForm)}
-						className={styles.mylistButton}
-					>
-						<AddBoxOutlinedIcon className={styles.icon} />
-					</button>
-				</div>
-			</div>
+  return (
+    <section className={styles.section}>
+      <div className={styles.myListContainer}>
+        <div className={styles.mylistBox}>
+          <img src="/mylistIcon.svg" alt="Logo" className={styles.icon}></img>
 
-			{showForm && (
-				<TaskForm
-					onSave={handleSave}
-					onCancel={handleFormCancel}
-				/>
-			)}
-			{data.map((item, index) => (
-				<Dropdown
-					title={item.categoryName}
-					key={index}
-				>
-					<TaskNav data={item} />
-				</Dropdown>
-			))}
+          <p>My List</p>
+        </div>
+        <div>
+          <button
+            onClick={() => setModalOpen(true)}
+            className={styles.mylistButton}
+          >
+            <AddBoxOutlinedIcon className={styles.icon} />
+          </button>
+        </div>
+        {isModalOpen && (
+          <Modal onClose={() => setModalOpen(false)}>
+            {/* MODAL BODY START */}
+            <h2 className={styles.modalTitle}>Add A New Task</h2>
 
-			{allData.map((data, index) => (
-				<Dropdown
-					title={data.categoryName}
-					key={index}
-				>
-					<TaskNav data={data} />
-				</Dropdown>
-			))}
-		</section>
-	)
-}
+            <TaskForm onSave={handleSave} />
 
-export default MyList
+            {/* MODAL BODY END */}
+          </Modal>
+        )}
+      </div>
+
+      {/* Dropdown toggle start */}
+
+      {data.map((item, index) => (
+        <Dropdown
+          title={
+            <span>
+              <span className={styles.categoryName}>{item.categoryName}</span>
+              <span className={styles.categoryLength}>
+                {" "}
+                {item.activityTypes.length}
+              </span>
+            </span>
+          }
+          key={index}
+          onDelete={() => handleDelete(item.categoryName)}
+        >
+          <TaskNav data={item} />
+        </Dropdown>
+      ))}
+
+      {allData.map((data, index) => (
+        <Dropdown
+          title={`${data.categoryName} ${data.activityTypes.length || 0}`}
+          key={index}
+        >
+          <TaskNav data={data} />
+        </Dropdown>
+      ))}
+
+      {/* Dropdown toggle end */}
+    </section>
+  );
+};
+
+export default MyList;
