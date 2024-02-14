@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback, useRef, useEffect } from "react";
 import Modal from "../Modal/Modal";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
@@ -30,15 +30,36 @@ const tasks = Tasks;
 					desc: task.taskDescription,
 					categoryName: category.categoryName,
 					activityName: activityType.activityName,
-					isCompleted: false,
+					checked: false,
 				}))
 			)
 		)
 	);
 
+	const CheckBox = ({ event, onSelect }) => {
+		return (
+			<div>
+				<input
+					type="checkbox"
+					checked={event.checked}
+					onChange={() => onSelect(event)}
+				/>
+				<span>{event.title}</span>
+			</div>
+		);
+	};
+
 const TaskCalendar = () => {
+	const clickRef = useRef(null);
+
+	useEffect(() => {
+		return () => {
+			window.clearTimeout(clickRef?.current);
+		};
+	}, []);
+
 	const [events, setEvents] = useState(tasksToEvents);
-	const [showModal, setShowModal] = useState(true)
+	const [showModal, setShowModal] = useState(false)
 
 	console.log(events);
 
@@ -72,18 +93,58 @@ const TaskCalendar = () => {
 		};
 	};
 
-	const handleDoubleClick = (doubleClickedEvent) => {
-		const updatedEvent = {
-			...doubleClickedEvent,
-			isCompleted: !doubleClickedEvent.isCompleted,
-		};
+	function buildMessage(calEvent, eventName) {
+		return `[${eventName}] an 'event' selection was made with:
+  ${JSON.stringify(calEvent, null, 2)}`;
+	}
 
-		const updatedEvents = events.map((event) =>
-			event === doubleClickedEvent ? updatedEvent : event
-		);
+	const handleSelectEvent = useCallback((calEvent) => {
+		/**
+		 * Here we are waiting 250 milliseconds (use what you want) prior to firing
+		 * our method. Why? Because both 'click' and 'doubleClick'
+		 * would fire, in the event of a 'doubleClick'. By doing
+		 * this, the 'click' handler is overridden by the 'doubleClick'
+		 * action.
+		 */
+		window.clearTimeout(clickRef?.current);
+		clickRef.current = window.setTimeout(() => {
+			// window.alert(buildMessage(calEvent, "onSelectEvent"));
+			openModal();
+		}, 250);
+	}, []);
 
-		setEvents(updatedEvents);
-	};
+	const handleDoubleClickEvent = useCallback((doubleClickedEvent) => {
+		/**
+		 * Notice our use of the same ref as above.
+		 */
+		window.clearTimeout(clickRef?.current);
+		clickRef.current = window.setTimeout(() => {
+			const updatedEvent = {
+				...doubleClickedEvent,
+				checked: !doubleClickedEvent.checked,
+			};
+
+			const updatedEvents = events.map((event) =>
+				event === doubleClickedEvent ? updatedEvent : event
+			);
+
+			setEvents(updatedEvents);
+			//window.alert(buildMessage(doubleClickedEvent, "handleDoubleClickEvent"));
+		}, 250);
+	}, []);
+
+	// const handleDoubleClickEvent = (doubleClickedEvent) => {
+	// 	const updatedEvent = {
+	// 		...doubleClickedEvent,
+	// 		isCompleted: !doubleClickedEvent.isCompleted,
+	// 	};
+
+	// 	const updatedEvents = events.map((event) =>
+	// 		event === doubleClickedEvent ? updatedEvent : event
+	// 	);
+
+	// 	setEvents(updatedEvents);
+	// };
 
 	const openModal = () => {
 		setShowModal(true);
@@ -95,7 +156,7 @@ const TaskCalendar = () => {
 
 	return (
 		<>
-			{showModal && <Modal onClose={closeModal}/>}
+			{showModal && <Modal onClose={closeModal} />}
 			<div style={{ height: 650 }}>
 				<Calendar
 					localizer={localizer}
@@ -105,9 +166,12 @@ const TaskCalendar = () => {
 					eventPropGetter={categoryStyles}
 					style={{ width: "70vw", margin: "50px" }}
 					toolbar={false}
-					onSelectEvent={openModal}
-					onDoubleClickEvent={handleDoubleClick}
+					onSelectEvent={handleSelectEvent}
+					onDoubleClickEvent={handleDoubleClickEvent}
 					showAllEvents={true}
+					components={{
+						event: CheckBox
+					}}
 				/>
 			</div>
 		</>
