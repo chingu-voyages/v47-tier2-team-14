@@ -3,6 +3,12 @@ import styles from "./Dashboard.module.css";
 import Card from "../Card/Card.jsx";
 import TaskCalendar from "../Calendar/Calendar.jsx";
 
+const studyColor = "#FF981F";
+const routineColor = "#2EA194";
+const dailyColor = "#673AB3";
+const chinguColor = "#EA1E61";
+const progressColor = "#FF5726";
+
 const Dashboard = () => {
 	return (
 		<main className={styles["dashboard-section"]}>
@@ -10,34 +16,39 @@ const Dashboard = () => {
 				{/* <h2>Dashboard section</h2> */}
 				<div className={styles["cardholder"]}>
 					<Card
+						id="routineActivities"
 						title="Routine Activities"
 						completedTasks={4}
 						totalTasks={7}
-						style={styles["routine card"]} // not working
+						
 					/>
 					<Card
+						id="chingu"
 						title="Chingu"
 						completedTasks={3}
 						totalTasks={6}
-						style={{ backgroundColor: "#EA1E61", color: "white" }} // not working
+						
 					/>
 					<Card
+						id="studying"
 						title="Studying"
 						completedTasks={5}
 						totalTasks={5}
-						style={{ backgroundColor: "#FF981F", color: "white" }}
+						
 					/>
 					<Card
+						id="dailyTasks"
 						title="Daily tasks"
 						completedTasks={1}
 						totalTasks={2}
-						style={{ backgroundColor: "#673AB3", color: "white" }}
+						
 					/>
 					<Card
+						id="progress"
 						title="Progress"
 						completedTasks={16}
 						totalTasks={28}
-						style={{ backgroundColor: "#EA1E61", color: "white" }}
+						
 					/>
 				</div>
 			</section>
