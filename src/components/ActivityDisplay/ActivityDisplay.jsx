@@ -6,10 +6,12 @@ import PropTypes from "prop-types";
 const ActivityDisplay = ({ data }) => {
   // Initialize state with completion status for each task
   const [tasks, setTasks] = useState(
-    data.Tasks.map((task) => ({
-      ...task,
-      isCompleted: task.isCompleted || false,
-    }))
+    data.Tasks
+      ? data.Tasks.map((task) => ({
+          ...task,
+          isCompleted: task.isCompleted || false,
+        }))
+      : []
   );
 
   // Update a task's completion status
@@ -26,7 +28,7 @@ const ActivityDisplay = ({ data }) => {
 
   // save function for the editTask
   const saveTaskEdits = (taskIndex, updatedTask) => {
-    const updatedTasks = tasks.map((task, index) =>
+    const updatedTasks = Tasks.map((task, index) =>
       index === taskIndex ? { ...task, ...updatedTask } : task
     );
     setTasks(updatedTasks);

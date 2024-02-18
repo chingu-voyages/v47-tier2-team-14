@@ -24,7 +24,9 @@
 }
 .editbtn {
   cursor: pointer;
-  padding: 5px;
+  color: #fff;
+  padding: 5px 10px 5px 10px;
   border-radius: 6px;
   border-style: none;
+  background-color: rgb(27, 80, 236);
 }

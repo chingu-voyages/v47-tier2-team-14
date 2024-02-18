@@ -20,6 +20,7 @@
 }
 
 .modalTitle {
+  color: darkred;
 }
 .mylistButton {
   align-items: flex-end;

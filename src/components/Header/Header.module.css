@@ -1,5 +1,5 @@
 header {
-  border: 2px solid blue;
+  border: 2px solid rgb(183, 179, 179);
   align-self: center;
   grid-area: header;
   padding: 20px 0 20px 0;
