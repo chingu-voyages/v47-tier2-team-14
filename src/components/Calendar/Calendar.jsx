@@ -1,4 +1,5 @@
-import { useState, useCallback, useRef, useEffect } from "react";
+import { useState, useCallback, useRef, useEffect, useContext } from "react";
+import { AppProvider, AppContext } from "../../context/AppContext";
 import Modal from "../Modal/Modal";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
@@ -50,6 +51,8 @@ const tasks = Tasks;
 	};
 
 const TaskCalendar = () => {
+
+	const { events, setEvents, openModal, closeModal, showModal, setShowModal, handleSave } = useContext(AppContext);
 	const clickRef = useRef(null);
 
 	useEffect(() => {
@@ -58,8 +61,8 @@ const TaskCalendar = () => {
 		};
 	}, []);
 
-	const [events, setEvents] = useState(tasksToEvents);
-	const [showModal, setShowModal] = useState(false)
+	// const [events, setEvents] = useState(tasksToEvents);
+	//const [showModal, setShowModal] = useState(false)
 
 	console.log(events);
 
@@ -99,13 +102,6 @@ const TaskCalendar = () => {
 	}
 
 	const handleSelectEvent = useCallback((calEvent) => {
-		/**
-		 * Here we are waiting 250 milliseconds (use what you want) prior to firing
-		 * our method. Why? Because both 'click' and 'doubleClick'
-		 * would fire, in the event of a 'doubleClick'. By doing
-		 * this, the 'click' handler is overridden by the 'doubleClick'
-		 * action.
-		 */
 		window.clearTimeout(clickRef?.current);
 		clickRef.current = window.setTimeout(() => {
 			// window.alert(buildMessage(calEvent, "onSelectEvent"));
@@ -114,9 +110,6 @@ const TaskCalendar = () => {
 	}, []);
 
 	const handleDoubleClickEvent = useCallback((doubleClickedEvent) => {
-		/**
-		 * Notice our use of the same ref as above.
-		 */
 		window.clearTimeout(clickRef?.current);
 		clickRef.current = window.setTimeout(() => {
 			const updatedEvent = {
@@ -128,31 +121,18 @@ const TaskCalendar = () => {
 				event === doubleClickedEvent ? updatedEvent : event
 			);
 
-			setEvents(updatedEvents);
+			handleSave();
 			//window.alert(buildMessage(doubleClickedEvent, "handleDoubleClickEvent"));
 		}, 250);
 	}, []);
 
-	// const handleDoubleClickEvent = (doubleClickedEvent) => {
-	// 	const updatedEvent = {
-	// 		...doubleClickedEvent,
-	// 		isCompleted: !doubleClickedEvent.isCompleted,
-	// 	};
-
-	// 	const updatedEvents = events.map((event) =>
-	// 		event === doubleClickedEvent ? updatedEvent : event
-	// 	);
-
-	// 	setEvents(updatedEvents);
+	// const openModal = () => {
+	// 	setShowModal(true);
 	// };
 
-	const openModal = () => {
-		setShowModal(true);
-	};
-
-	const closeModal = () => {
-		setShowModal(false);
-	};
+	// const closeModal = () => {
+	// 	setShowModal(false);
+	// };
 
 	return (
 		<>
