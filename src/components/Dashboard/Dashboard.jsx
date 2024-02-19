@@ -1,5 +1,3 @@
-// Dashboard.js
-
 import { useContext } from "react";
 import styles from "./Dashboard.module.css";
 import Card from "../Card/Card.jsx";

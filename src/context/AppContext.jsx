@@ -3,7 +3,6 @@ import Tasks from "/assets/tasks-example.json";
 import moment from "moment";
 
 const AppContext = createContext();
-
 const tasks = Tasks;
 
 // convert day strings to corresponding date objects
@@ -102,7 +101,15 @@ const AppProvider = ({ children }) => {
 		);
 		setDailyTasksTotal(dailyTasks.length);
 		setDailyTasksCompleted(dailyTasks.filter((event) => event.checked).length);
-	}, [events, chinguTasksCompleted, chinguTasksTotal, dailyTasksCompleted, dailyTasksTotal, routineActivitiesTasksCompleted, routineActivitiesTasksTotal, studyingTasksCompleted, studyingTasksTotal]);
+	}, [events,
+		chinguTasksCompleted,
+		chinguTasksTotal,
+		dailyTasksCompleted,
+		dailyTasksTotal,
+		routineActivitiesTasksCompleted,
+		routineActivitiesTasksTotal,
+		studyingTasksCompleted,
+		studyingTasksTotal]);
 
 	const handleSave = (newEvent) => {
 		const eventIndex = events.findIndex(
@@ -127,7 +134,7 @@ const AppProvider = ({ children }) => {
 		}
 	};
 
-	// Show Modal
+	// Show/hide modal
 	const openModal = () => {
 		setShowModal(true);
 	};

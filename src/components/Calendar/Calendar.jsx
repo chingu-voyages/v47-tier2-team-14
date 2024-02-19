@@ -21,21 +21,21 @@ const tasks = Tasks;
 	};
 
 	// map tasks data to events that can be used by react-big-calendar
-	const tasksToEvents = tasks.flatMap((category) =>
-		category.activityTypes.flatMap((activityType) =>
-			activityType.Tasks.flatMap((task) =>
-				task.days.map((day) => ({
-					title: task.taskName,
-					start: getDayDate(day),
-					end: moment(getDayDate(day)),
-					desc: task.taskDescription,
-					categoryName: category.categoryName,
-					activityName: activityType.activityName,
-					checked: false,
-				}))
-			)
-		)
-	);
+	// const tasksToEvents = tasks.flatMap((category) =>
+	// 	category.activityTypes.flatMap((activityType) =>
+	// 		activityType.Tasks.flatMap((task) =>
+	// 			task.days.map((day) => ({
+	// 				title: task.taskName,
+	// 				start: getDayDate(day),
+	// 				end: moment(getDayDate(day)),
+	// 				desc: task.taskDescription,
+	// 				categoryName: category.categoryName,
+	// 				activityName: activityType.activityName,
+	// 				checked: false,
+	// 			}))
+	// 		)
+	// 	)
+	// );
 
 	const CheckBox = ({ event, onSelect }) => {
 		return (
@@ -96,10 +96,10 @@ const TaskCalendar = () => {
 		};
 	};
 
-	function buildMessage(calEvent, eventName) {
-		return `[${eventName}] an 'event' selection was made with:
-  ${JSON.stringify(calEvent, null, 2)}`;
-	}
+// 	function buildMessage(calEvent, eventName) {
+// 		return `[${eventName}] an 'event' selection was made with:
+//   ${JSON.stringify(calEvent, null, 2)}`;
+// 	}
 
 	const handleSelectEvent = useCallback((calEvent) => {
 		window.clearTimeout(clickRef?.current);
@@ -118,21 +118,13 @@ const TaskCalendar = () => {
 						? { ...event, checked: !event.checked }
 						: event
 				);
-				setEvents(updatedEvents); // Update the events array
-				handleSave(events); // Update events in local storage
-				console.log(events)
+				setEvents(updatedEvents);
+				handleSave(events);
+				// console.log(events)
 			}, 250);
 		},
 		[events, setEvents, handleSave]
 	);
-
-	// const openModal = () => {
-	// 	setShowModal(true);
-	// };
-
-	// const closeModal = () => {
-	// 	setShowModal(false);
-	// };
 
 	return (
 		<>
