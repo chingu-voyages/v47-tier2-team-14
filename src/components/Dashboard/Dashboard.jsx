@@ -4,12 +4,6 @@ import Card from "../Card/Card.jsx";
 import TaskCalendar from "../Calendar/Calendar.jsx";
 import { AppContext } from "../../context/AppContext";
 
-const studyColor = "#FF981F";
-const routineColor = "#2EA194";
-const dailyColor = "#673AB3";
-const chinguColor = "#EA1E61";
-const progressColor = "#FF5726";
-
 const Dashboard = () => {
 	const {
 		progressTasksCompleted,
@@ -22,6 +16,11 @@ const Dashboard = () => {
 		studyingTasksCompleted,
 		dailyTasksTotal,
 		dailyTasksCompleted,
+		studyColor,
+		routineColor,
+		dailyColor,
+		chinguColor,
+		progressColor,
 	} = useContext(AppContext);
 
 	return (

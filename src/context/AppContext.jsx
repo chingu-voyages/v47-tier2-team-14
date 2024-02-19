@@ -4,6 +4,11 @@ import moment from "moment";
 
 const AppContext = createContext();
 const tasks = Tasks;
+const studyColor = "#FF981F";
+const routineColor = "#2EA194";
+const dailyColor = "#673AB3";
+const chinguColor = "#EA1E61";
+const progressColor = "#FF5726";
 
 // convert day strings to corresponding date objects
 const getDayDate = (day) => {
@@ -163,6 +168,11 @@ const AppProvider = ({ children }) => {
 				studyingTasksCompleted,
 				dailyTasksTotal,
 				dailyTasksCompleted,
+				studyColor,
+				routineColor,
+				dailyColor,
+				chinguColor,
+				progressColor
 			}}
 		>
 			{children}
