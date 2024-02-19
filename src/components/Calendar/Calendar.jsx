@@ -109,22 +109,22 @@ const TaskCalendar = () => {
 		}, 250);
 	}, []);
 
-	const handleDoubleClickEvent = useCallback((doubleClickedEvent) => {
-		window.clearTimeout(clickRef?.current);
-		clickRef.current = window.setTimeout(() => {
-			const updatedEvent = {
-				...doubleClickedEvent,
-				checked: !doubleClickedEvent.checked,
-			};
-
-			const updatedEvents = events.map((event) =>
-				event === doubleClickedEvent ? updatedEvent : event
-			);
-
-			handleSave();
-			//window.alert(buildMessage(doubleClickedEvent, "handleDoubleClickEvent"));
-		}, 250);
-	}, []);
+	const handleDoubleClickEvent = useCallback(
+		(doubleClickedEvent) => {
+			window.clearTimeout(clickRef?.current);
+			clickRef.current = window.setTimeout(() => {
+				const updatedEvents = events.map((event) =>
+					event === doubleClickedEvent
+						? { ...event, checked: !event.checked }
+						: event
+				);
+				setEvents(updatedEvents); // Update the events array
+				handleSave(events); // Update events in local storage
+				console.log(events)
+			}, 250);
+		},
+		[events, setEvents, handleSave]
+	);
 
 	// const openModal = () => {
 	// 	setShowModal(true);
@@ -137,6 +137,7 @@ const TaskCalendar = () => {
 	return (
 		<>
 			{showModal && <Modal onClose={closeModal} />}
+			
 			<div style={{ height: 650 }}>
 				<Calendar
 					localizer={localizer}
@@ -150,7 +151,9 @@ const TaskCalendar = () => {
 					onDoubleClickEvent={handleDoubleClickEvent}
 					showAllEvents={true}
 					components={{
-						event: CheckBox
+						event: ({ event }) => (
+							<CheckBox event={event} onSelect={handleDoubleClickEvent} />
+						),
 					}}
 				/>
 			</div>

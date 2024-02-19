@@ -1,7 +1,10 @@
+// Dashboard.js
+
+import { useContext } from "react";
 import styles from "./Dashboard.module.css";
-//import Todo from '../Todo/Todo';
 import Card from "../Card/Card.jsx";
 import TaskCalendar from "../Calendar/Calendar.jsx";
+import { AppContext } from "../../context/AppContext";
 
 const studyColor = "#FF981F";
 const routineColor = "#2EA194";
@@ -10,51 +13,62 @@ const chinguColor = "#EA1E61";
 const progressColor = "#FF5726";
 
 const Dashboard = () => {
+	const {
+		progressTasksCompleted,
+		progressTasksTotal,
+		chinguTasksTotal,
+		chinguTasksCompleted,
+		routineActivitiesTasksTotal,
+		routineActivitiesTasksCompleted,
+		studyingTasksTotal,
+		studyingTasksCompleted,
+		dailyTasksTotal,
+		dailyTasksCompleted,
+	} = useContext(AppContext);
+
 	return (
 		<main className={styles["dashboard-section"]}>
 			<section className={styles["dashboard-heading-section"]}>
-				{/* <h2>Dashboard section</h2> */}
 				<div className={styles["cardholder"]}>
 					<Card
 						id="routineActivities"
 						title="Routine Activities"
-						completedTasks={4}
-						totalTasks={7}
-						
+						completedTasks={routineActivitiesTasksCompleted}
+						totalTasks={routineActivitiesTasksTotal}
+						color={routineColor}
 					/>
 					<Card
 						id="chingu"
 						title="Chingu"
-						completedTasks={3}
-						totalTasks={6}
-						
+						completedTasks={chinguTasksCompleted}
+						totalTasks={chinguTasksTotal}
+						color={chinguColor}
 					/>
 					<Card
 						id="studying"
 						title="Studying"
-						completedTasks={5}
-						totalTasks={5}
-						
+						completedTasks={studyingTasksCompleted}
+						totalTasks={studyingTasksTotal}
+						color={studyColor}
 					/>
 					<Card
 						id="dailyTasks"
 						title="Daily tasks"
-						completedTasks={1}
-						totalTasks={2}
-						
+						completedTasks={dailyTasksCompleted}
+						totalTasks={dailyTasksTotal}
+						color={dailyColor}
 					/>
 					<Card
 						id="progress"
 						title="Progress"
-						completedTasks={16}
-						totalTasks={28}
-						
+						completedTasks={progressTasksCompleted}
+						totalTasks={progressTasksTotal}
+						color={progressColor}
 					/>
 				</div>
 			</section>
 			<section className={styles["dashboard-content-section"]}>
 				<TaskCalendar />
-				{/* <Todo /> */}
 			</section>
 		</main>
 	);
