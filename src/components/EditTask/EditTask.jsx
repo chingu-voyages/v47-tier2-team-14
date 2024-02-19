@@ -1,8 +1,9 @@
 import PropTypes from "prop-types";
+import styles from "./EditTask.module.css";
 
-const EditTask = ({ task, onChange, onSave }) => {
+const EditTask = ({ task, onChange, onSave, onCancel }) => {
   return (
-    <div>
+    <div className={styles.EditTaskForm}>
       <input
         type="text"
         name="taskName"
@@ -24,7 +25,10 @@ const EditTask = ({ task, onChange, onSave }) => {
         onChange={onChange}
         placeholder="Days"
       />
-      <button onClick={onSave}>Save</button>
+      <div className={styles.buttonContainer}>
+        <button onClick={onSave}>Save</button>
+        <button onClick={onCancel}>Cancel</button>
+      </div>
     </div>
   );
 };
@@ -36,6 +40,7 @@ EditTask.propTypes = {
   }).isRequired,
   onChange: PropTypes.func.isRequired,
   onSave: PropTypes.func.isRequired,
+  onCancel: PropTypes.func.isRequired,
 };
 
 export default EditTask;

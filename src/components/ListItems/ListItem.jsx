@@ -1,37 +1,31 @@
-import { useState } from "react";
-// import PropTypes from "prop-types";
+// import { useState } from "react";
 import TaskNav from "../TaskNav/TaskNav";
-import TaskForm from "../TaskForm/TaskForm";
 import Modal from "../Modal/Modal";
+import TaskForm from "../TaskForm/TaskForm";
 import Dropdown from "../Dropdown/Dropdown";
 import styles from "./ListItem.module.css";
 import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
-
+import { useTaskManager } from "../TaskManager/TaskManager";
 import { allData } from "../../data/tasks-example";
 
+const initialData = JSON.parse(localStorage.getItem("tasksData")) || [];
 const MyList = () => {
-  const [isModalOpen, setModalOpen] = useState(false);
-  const [data, setData] = useState(() => {
-    // Initialize data from local storage if available
-    const localData = localStorage.getItem("tasksData");
-    return localData ? JSON.parse(localData) : allData;
-  });
-
-  // Saves new Task to localStorage
-  const handleSave = (newData) => {
-    const updatedData = [...data, newData];
-    setData(updatedData);
-    localStorage.setItem("tasksData", JSON.stringify(updatedData));
-  };
+  const { data, isModalOpen, openModal, closeModal, handleSave } =
+    useTaskManager(initialData);
+  // const [data, setData] = useState(() => {
+  //   // Initialize data from local storage if available
+  //   const localData = localStorage.getItem("tasksData");
+  //   return localData ? JSON.parse(localData) : allData;
+  // });
 
   // Deletes a Task from localStorage
-  const handleDelete = (categoryName) => {
-    const filteredData = data.filter(
-      (item) => item.categoryName !== categoryName
-    );
-    setData(filteredData);
-    localStorage.setItem("tasksData", JSON.stringify(filteredData));
-  };
+  // const handleDelete = (categoryName) => {
+  //   const filteredData = data.filter(
+  //     (item) => item.categoryName !== categoryName
+  //   );
+  //   setData(filteredData);
+  //   localStorage.setItem("tasksData", JSON.stringify(filteredData));
+  // };
 
   return (
     <section className={styles.section}>
@@ -43,39 +37,34 @@ const MyList = () => {
         </div>
         <div>
           <button
-            onClick={() => setModalOpen(true)}
+            title="create a new Task"
+            onClick={openModal}
             className={styles.mylistButton}
           >
             <AddBoxOutlinedIcon className={styles.icon} />
           </button>
         </div>
+
+        {/* Modal start */}
         {isModalOpen && (
-          <Modal onClose={() => setModalOpen(false)}>
-            {/* MODAL BODY START */}
-            <h2 className={styles.modalTitle}>Add A New Task</h2>
-
-            <TaskForm onSave={handleSave} />
-
-            {/* MODAL BODY END */}
+          <Modal onClose={closeModal}>
+            <TaskForm
+              onSave={handleSave}
+              onClose={closeModal}
+              existingCategories={data.map((item) => item.categoryName)}
+            />
           </Modal>
         )}
+        {/* Modal ends */}
       </div>
 
       {/* Dropdown toggle start */}
 
       {data.map((item, index) => (
         <Dropdown
-          title={
-            <span>
-              <span className={styles.categoryName}>{item.categoryName}</span>
-              <span className={styles.categoryLength}>
-                {" "}
-                {item.activityTypes.length}
-              </span>
-            </span>
-          }
+          title={`${item.categoryName} ${item.activityTypes.length || 0}`}
           key={index}
-          onDelete={() => handleDelete(item.categoryName)}
+          // onDelete={() => handleDelete(item.categoryName)}
         >
           <TaskNav data={item} />
         </Dropdown>
