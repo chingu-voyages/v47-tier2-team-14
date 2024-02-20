@@ -2,15 +2,11 @@ import styles from "../TaskPage/TaskPage.module.css";
 
 import TaskForm from "../TaskForm/TaskForm";
 
-
 import Modal from "../Modal/Modal";
-// import { useState } from "react";
+
 import AddIcon from "@mui/icons-material/Add";
 
 import { useTaskManager } from "../TaskManager/TaskManager";
-
-
-import { Link, useLocation } from "react-router-dom";
 
 import { allData } from "../../data/tasks-example";
 import CategoryType from "../../components/CategoryType/CategoryType";
