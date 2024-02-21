@@ -4,6 +4,11 @@ import moment from "moment";
 
 const AppContext = createContext();
 const tasks = Tasks;
+const studyColor = "#FF981F";
+const routineColor = "#2EA194";
+const dailyColor = "#673AB3";
+const chinguColor = "#EA1E61";
+const progressColor = "#FF5726";
 
 // convert day strings to corresponding date objects
 const getDayDate = (day) => {
@@ -40,18 +45,19 @@ const AppProvider = ({ children }) => {
 	});
 
 	const initialTasksTotal = tasksToEvents.length;
-	const [progressTasksTotal, setProgressTasksTotal] = useState(initialTasksTotal);
+	const [progressTasksTotal, setProgressTasksTotal] =
+		useState(initialTasksTotal);
 	const [progressTasksCompleted, setProgressTasksCompleted] = useState(0);
 	const [chinguTasksTotal, setChinguTasksTotal] = useState(0);
 	const [chinguTasksCompleted, setChinguTasksCompleted] = useState(0);
-	const [routineActivitiesTasksTotal, setRoutineActivitiesTasksTotal] = useState(0);
-	const [routineActivitiesTasksCompleted, setRoutineActivitiesTasksCompleted] = useState(0);
+	const [routineActivitiesTasksTotal, setRoutineActivitiesTasksTotal] =
+		useState(0);
+	const [routineActivitiesTasksCompleted, setRoutineActivitiesTasksCompleted] =
+		useState(0);
 	const [studyingTasksTotal, setStudyingTasksTotal] = useState(0);
 	const [studyingTasksCompleted, setStudyingTasksCompleted] = useState(0);
 	const [dailyTasksTotal, setDailyTasksTotal] = useState(0);
 	const [dailyTasksCompleted, setDailyTasksCompleted] = useState(0);
-
-	
 
 	useEffect(() => {
 		const chinguTasks = events.filter(
@@ -101,7 +107,8 @@ const AppProvider = ({ children }) => {
 		);
 		setDailyTasksTotal(dailyTasks.length);
 		setDailyTasksCompleted(dailyTasks.filter((event) => event.checked).length);
-	}, [events,
+	}, [
+		events,
 		chinguTasksCompleted,
 		chinguTasksTotal,
 		dailyTasksCompleted,
@@ -109,7 +116,8 @@ const AppProvider = ({ children }) => {
 		routineActivitiesTasksCompleted,
 		routineActivitiesTasksTotal,
 		studyingTasksCompleted,
-		studyingTasksTotal]);
+		studyingTasksTotal,
+	]);
 
 	const handleSave = (newEvent) => {
 		const eventIndex = events.findIndex(
@@ -163,6 +171,11 @@ const AppProvider = ({ children }) => {
 				studyingTasksCompleted,
 				dailyTasksTotal,
 				dailyTasksCompleted,
+				studyColor,
+				routineColor,
+				dailyColor,
+				chinguColor,
+				progressColor,
 			}}
 		>
 			{children}
