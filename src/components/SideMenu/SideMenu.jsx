@@ -1,4 +1,4 @@
-import styles from './SideMenu.module.css'
+import styles from "./SideMenu.module.css";
 // import ShowTasks from "../ShowTasks/ShowTasks";
 import MyList from "../ListItems/ListItem.jsx";
 import { Link, useLocation } from "react-router-dom";
@@ -79,4 +79,4 @@ const SideMenu = () => {
   );
 };
 
-export default SideMenu
+export default SideMenu;

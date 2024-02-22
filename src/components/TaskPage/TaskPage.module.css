@@ -1,13 +1,10 @@
 .TaskPageContainer {
-
   grid-area: dashboard;
   background-color: rgba(183, 179, 179, 0.257);
-
-
 }
 .TaskPageNav {
-	display: flex;
-	justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 .TaskPageBody {
   border-radius: 10px;
@@ -21,16 +18,16 @@
   color: #1458dd;
   font-weight: 600;
   gap: 20px;
-	border-radius: 6px;
-	background-color: #fff;
-	padding: 20px;
+  border-radius: 6px;
+  background-color: #fff;
+  padding: 20px;
 }
 
 .TaskPageLeftNav {
-	display: flex;
-	flex-direction: row;
-	gap: 30px;
-	padding: 20px 0 20px 50px;
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  padding: 20px 0 20px 50px;
 }
 
 .TaskPageLeftNavDiv {
@@ -42,8 +39,8 @@
   color: #3f3e3e;
 }
 .TaskPageLeftNavDiv:hover {
-	font-weight: 600;
-	color: #1458dd;
+  font-weight: 600;
+  color: #1458dd;
 }
 .BoldLink {
   color: #1458dd;
@@ -62,7 +59,6 @@
   color: white;
 }
 
-
 .AddTask {
   padding: 20px 0 0 40px;
 }
@@ -71,26 +67,28 @@
   align-items: center;
   display: flex;
   background-color: #1458dd;
+  border-radius: 6px;
+  border-style: none;
+  padding: 5px 10px;
   color: #fff;
+}
 
 .TaskPageNavRight {
-	padding: 20px 50px 20px 0;
-	text-decoration: none;
+  padding: 20px 50px 20px 0;
+  text-decoration: none;
 }
 .TaskPageNavRight button {
-	align-items: center;
-	display: flex;
-	background-color: #1458dd;
-	color: #fff;
+  align-items: center;
+  display: flex;
+  background-color: #1458dd;
+  color: #fff;
 
-
-	border-radius: 6px;
-	border-style: none;
-	padding: 8px 15px;
-	cursor: pointer;
-	gap: 8px;
+  border-radius: 6px;
+  border-style: none;
+  padding: 8px 15px;
+  cursor: pointer;
+  gap: 8px;
 }
-
 
 .TaskPageBodyNav {
   display: flex;
@@ -103,11 +101,3 @@
   flex-direction: column;
   padding-left: 20px;
 }
-
-
-
-
-
-
-
-
