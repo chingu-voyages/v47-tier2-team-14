@@ -1,9 +1,7 @@
 import styles from "./SideMenu.module.css";
-// import ShowTasks from "../ShowTasks/ShowTasks";
+
 import MyList from "../ListItems/ListItem.jsx";
 import { Link, useLocation } from "react-router-dom";
-
-import { allData } from "../../data/tasks-example.js";
 
 const SideMenu = () => {
   const location = useLocation();
@@ -13,18 +11,20 @@ const SideMenu = () => {
   const tasksDataString = localStorage.getItem("tasksData");
   const tasksData = tasksDataString ? JSON.parse(tasksDataString) : [];
 
-  // Combine tasks from local storage and allData
-
-  const combinedTasksData = [...allData, ...tasksData];
-
   // Calculate the total number of tasks across all categories and activities
-  const totalTasksLength = combinedTasksData.reduce((total, category) => {
-    const tasksInCategory = category.activityTypes.reduce(
-      (sum, activity) => sum + activity.Tasks.length,
-      0
-    );
-    return total + tasksInCategory;
-  }, 0);
+  const totalTasksLength = Array.isArray(tasksData)
+    ? tasksData.reduce((total, category) => {
+        const tasksInCategory = Array.isArray(category.activityTypes)
+          ? category.activityTypes.reduce(
+              (sum, activity) =>
+                sum +
+                (Array.isArray(activity.Tasks) ? activity.Tasks.length : 0),
+              0
+            )
+          : 0;
+        return total + tasksInCategory;
+      }, 0)
+    : 0;
 
   return (
     <aside>

@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from "uuid";
+
 export const allData = [
   {
     categoryName: "ROUTINE ACTIVITIES",
@@ -169,10 +171,20 @@ export const allData = [
   },
 ];
 
-// Retrieve the serialized data from localStorage
-const serializedData = localStorage.getItem("tasksData");
+const allDataWithIds = allData.map((category) => ({
+  ...category,
+  id: uuidv4(),
+  activityTypes: category.activityTypes.map((activity) => ({
+    ...activity,
+    id: uuidv4(),
+    Tasks: activity.Tasks.map((task) => ({
+      ...task,
+      id: uuidv4(), // Adding unique ID here
+    })),
+  })),
+}));
 
-// Deserialize the data back into a JavaScript object
-const tasksData = JSON.parse(serializedData);
+localStorage.setItem("tasksData", JSON.stringify(allDataWithIds));
+const storedTasksData = JSON.parse(localStorage.getItem("tasksData") || "[]");
 
-console.log(tasksData);
+console.log(storedTasksData);

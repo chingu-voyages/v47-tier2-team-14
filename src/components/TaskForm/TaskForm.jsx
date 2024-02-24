@@ -14,7 +14,7 @@ const TaskForm = ({ onSave, onClose, existingCategories }) => {
 
   // auto select existing Category if available
   useEffect(() => {
-    if (existingCategories.length === 0) {
+    if (existingCategories.length > 0) {
       setCategoryName(existingCategories[0]);
       setIsNewCategory(false);
     }
@@ -36,6 +36,9 @@ const TaskForm = ({ onSave, onClose, existingCategories }) => {
     // Determine the activity name based on whether it's new or existing
     const finalActivityName = isNewActivity ? newActivityName : activityName;
 
+    // Split days string into an array
+    const daysArray = days.split(",").map((day) => day.trim());
+
     onSave({
       categoryName,
       isNewCategory,
@@ -45,7 +48,7 @@ const TaskForm = ({ onSave, onClose, existingCategories }) => {
         task: {
           taskName,
           taskDescription,
-          days,
+          days: daysArray,
         },
       },
     });
@@ -70,12 +73,13 @@ const TaskForm = ({ onSave, onClose, existingCategories }) => {
         <h2>Add A New Task</h2>
       </div>
       <div className={styles.categorySelection}>
-        <label>
+        <label className={styles.categoryLabel}>
           Category:
           {isNewCategory ? (
             <input
               type="text"
               placeholder="New Category Name"
+              className={styles.inputArea}
               value={categoryName}
               onChange={(e) => setCategoryName(e.target.value)}
             />
@@ -85,6 +89,7 @@ const TaskForm = ({ onSave, onClose, existingCategories }) => {
                 value={categoryName}
                 onChange={(e) => setCategoryName(e.target.value)}
                 disabled={isNewCategory}
+                className={styles.selectButton}
               >
                 {existingCategories.map((category, index) => (
                   <option key={index} value={category}>
@@ -98,7 +103,7 @@ const TaskForm = ({ onSave, onClose, existingCategories }) => {
                 onClick={() => setIsNewCategory(true)}
                 className={styles.newCategoryButton}
               >
-                New Category
+                Add New Category
               </button>
             </>
           )}
@@ -106,7 +111,7 @@ const TaskForm = ({ onSave, onClose, existingCategories }) => {
       </div>
 
       <div className={styles.field}>
-        <label>
+        <label className={styles.activityLabel}>
           Activity Name:
           {isNewActivity || isNewCategory ? (
             <input
@@ -139,7 +144,7 @@ const TaskForm = ({ onSave, onClose, existingCategories }) => {
         </label>
       </div>
       <div className={styles.field}>
-        <label>
+        <label className={styles.taskLabel}>
           Task Name:
           <input
             type="text"
@@ -149,7 +154,7 @@ const TaskForm = ({ onSave, onClose, existingCategories }) => {
         </label>
       </div>
       <div className={styles.field}>
-        <label>
+        <label className={styles.descLabel}>
           Task Description:
           <input
             type="text"
@@ -159,12 +164,13 @@ const TaskForm = ({ onSave, onClose, existingCategories }) => {
         </label>
       </div>
       <div className={styles.field}>
-        <label>
-          Day:
+        <label className={styles.dateLabel}>
+          Days (e.g., Monday, 7)
           <input
-            type="date"
+            type="text"
             value={days}
             onChange={(e) => setDays(e.target.value)}
+            placeholder="Enter days seperated by commas"
           />
         </label>
       </div>

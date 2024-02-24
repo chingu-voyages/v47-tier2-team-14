@@ -1,31 +1,16 @@
-// import { useState } from "react";
 import TaskNav from "../TaskNav/TaskNav";
 import Modal from "../Modal/Modal";
 import TaskForm from "../TaskForm/TaskForm";
 import Dropdown from "../Dropdown/Dropdown";
 import styles from "./ListItem.module.css";
 import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
-import { useTaskManager } from "../TaskManager/TaskManager";
-import { allData } from "../../data/tasks-example";
+import { useTaskManager } from "../../hooks/TaskManager";
+// import { allData } from "../../data/tasks-example";
 
 const initialData = JSON.parse(localStorage.getItem("tasksData")) || [];
 const MyList = () => {
   const { data, isModalOpen, openModal, closeModal, handleSave } =
     useTaskManager(initialData);
-  // const [data, setData] = useState(() => {
-  //   // Initialize data from local storage if available
-  //   const localData = localStorage.getItem("tasksData");
-  //   return localData ? JSON.parse(localData) : allData;
-  // });
-
-  // Deletes a Task from localStorage
-  // const handleDelete = (categoryName) => {
-  //   const filteredData = data.filter(
-  //     (item) => item.categoryName !== categoryName
-  //   );
-  //   setData(filteredData);
-  //   localStorage.setItem("tasksData", JSON.stringify(filteredData));
-  // };
 
   return (
     <section className={styles.section}>
@@ -62,20 +47,13 @@ const MyList = () => {
 
       {data.map((item, index) => (
         <Dropdown
-          title={`${item.categoryName} ${item.activityTypes.length || 0}`}
+          title={`${item.categoryName || "Unnamed Category"} ${
+            item.activityTypes?.length || 0
+          }`}
+          className={item.categoryName ? "" : styles.greyedOut}
           key={index}
-          // onDelete={() => handleDelete(item.categoryName)}
         >
           <TaskNav data={item} />
-        </Dropdown>
-      ))}
-
-      {allData.map((data, index) => (
-        <Dropdown
-          title={`${data.categoryName} ${data.activityTypes.length || 0}`}
-          key={index}
-        >
-          <TaskNav data={data} />
         </Dropdown>
       ))}
 

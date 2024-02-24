@@ -8,6 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 9999;
 }
 
 .modal {
@@ -16,7 +17,7 @@
   border-radius: 8px;
   position: relative;
   width: 80%;
-  height: 50%;
+  height: 55%;
   max-width: 500px;
 }
 
