@@ -1,5 +1,5 @@
 .navbar {
-  border: 2px solid goldenrod;
+  border: 2px solid rgb(183, 179, 179);
   display: flex;
   align-items: center;
   justify-content: space-between;

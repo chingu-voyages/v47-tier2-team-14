@@ -23,13 +23,19 @@ const Tasks = ({ data, onToggleTask, onSave }) => {
 
   return (
     <div className={styles.TaskDetails}>
-      <input type="checkbox" checked={data.isCompleted} onChange={onToggle} />
+      {!editMode && (
+        <input type="checkbox" checked={data.isCompleted} onChange={onToggle} />
+      )}
+
       {editMode ? (
         <EditTask
           task={editedTask}
           onChange={handleEditChange}
           onSave={() => {
             onSave(editedTask);
+            setEditMode(false);
+          }}
+          onCancel={() => {
             setEditMode(false);
           }}
         />
@@ -53,9 +59,12 @@ const Tasks = ({ data, onToggleTask, onSave }) => {
           </p>
         </div>
       )}
-      <button onClick={() => setEditMode(true)} className={styles.editbtn}>
-        Edit
-      </button>
+
+      {!editMode && (
+        <button onClick={() => setEditMode(true)} className={styles.editbtn}>
+          Edit
+        </button>
+      )}
     </div>
   );
 };

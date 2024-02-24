@@ -5,7 +5,7 @@ const TaskNav = ({ data }) => {
   return (
     // Side Menu Task List
     <div>
-      {data.activityTypes.map((activityType, index) => (
+      {data.activityTypes?.map((activityType, index) => (
         <div key={index} className={styles.itemsContainer}>
           <img
             src="/arrow-categoryIcon.svg"
@@ -14,7 +14,7 @@ const TaskNav = ({ data }) => {
           />
           <img src="/elipseIcon.svg" alt="Logo" />
           <p>{activityType.activityName}</p>
-          <p className={styles.counter}>{activityType.Tasks.length}</p>
+          <p className={styles.counter}>{(activityType.Tasks || []).length}</p>
         </div>
       ))}
     </div>
