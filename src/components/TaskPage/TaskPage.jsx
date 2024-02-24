@@ -1,15 +1,10 @@
-import styles from "../TaskPage/TaskPage.module.css";
-
 import TaskForm from "../TaskForm/TaskForm";
-
 import Modal from "../Modal/Modal";
-
-import AddIcon from "@mui/icons-material/Add";
-
-import { useTaskManager } from "../TaskManager/TaskManager";
-
-import { allData } from "../../data/tasks-example";
+import { useTaskManager } from "../../hooks/TaskManager";
+// import { allData } from "../../data/tasks-example";
 import CategoryType from "../../components/CategoryType/CategoryType";
+import styles from "../TaskPage/TaskPage.module.css";
+import AddIcon from "@mui/icons-material/Add";
 
 const initialData = JSON.parse(localStorage.getItem("tasksData")) || [];
 const TaskPage = () => {
@@ -29,7 +24,7 @@ const TaskPage = () => {
         <div className={styles.AddTask}>
           <button onClick={openModal} className={styles.addTaskButton}>
             <AddIcon />
-            <p> New Task</p>
+            <p className={styles.buttonText}>New Task</p>
           </button>
           {/* MODAL BODY START */}
           {isModalOpen && (
@@ -37,7 +32,9 @@ const TaskPage = () => {
               <TaskForm
                 onSave={handleSave}
                 onClose={closeModal}
-                existingCategories={data.map((item) => item.categoryName)}
+                existingCategories={
+                  data ? data.map((item) => item.categoryName) : []
+                }
               />
             </Modal>
           )}
@@ -60,9 +57,9 @@ const TaskPage = () => {
             className={styles.TaskPageNavIcon}
           ></img>
         </div>
-        {allData.map((data, index) => (
+        {/* {allData.map((data, index) => (
           <CategoryType data={data} key={index} id={index} />
-        ))}
+        ))} */}
         {data.map((item, index) => (
           <CategoryType data={item} key={index} />
         ))}

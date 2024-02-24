@@ -4,8 +4,12 @@ import PropTypes from "prop-types";
 const CategoryType = ({ data }) => {
   return (
     <>
-      {data.activityTypes.map((data, index) => (
-        <ActivityDisplay data={data} key={index} id={index} />
+      {data.activityTypes.map((activityType) => (
+        <ActivityDisplay
+          data={activityType}
+          key={activityType.id}
+          id={activityType.id}
+        />
       ))}
     </>
   );
@@ -13,7 +17,15 @@ const CategoryType = ({ data }) => {
 
 CategoryType.propTypes = {
   data: PropTypes.shape({
-    activityTypes: PropTypes.arrayOf(PropTypes.array.isRequired),
+    activityTypes: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+          .isRequired,
+
+        activityName: PropTypes.string,
+        Tasks: PropTypes.array,
+      })
+    ).isRequired,
   }).isRequired,
 };
 

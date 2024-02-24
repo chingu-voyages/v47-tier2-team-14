@@ -1,23 +1,34 @@
 import { useState } from "react";
-
 import styles from "./Tasks.module.css";
 import PropTypes from "prop-types";
 import EditTask from "../../components/EditTask/EditTask";
 
-const Tasks = ({ data, onToggleTask, onSave }) => {
+const Tasks = ({ data, onToggleTask, onSave, onDelete }) => {
   const [editMode, setEditMode] = useState(false);
-  const [editedTask, setEditedTask] = useState({
-    taskName: data.taskName,
-    taskDescription: data.taskDescription,
-    days: data.days,
-  });
+  // const [editedTask, setEditedTask] = useState({
+  //   id: data.id,
+  //   taskName: data.taskName,
+  //   taskDescription: data.taskDescription,
+  //   days: data.days,
+  //   isCompleted: data.isCompleted,
+  // });
+  //   const [deleteTask, setDeleteTask] = useState({
+  //     taskName: data.taskName ? data.taskName : "",
+  //     taskDescription: data.taskDescription ? data.taskDescription : "",
+  //     days: data.days ? data.days : 0,
+  //   });
 
-  const handleEditChange = (e) => {
-    const { name, value } = e.target;
-    setEditedTask((prevTask) => ({ ...prevTask, [name]: value }));
-  };
+  // const handleEditChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setEditedTask((prevTask) => ({ ...prevTask, [name]: value }));
+  // };
 
   const onToggle = (e) => {
+    // setEditedTask((prevTask) => ({
+    //   ...prevTask,
+    onToggleTask({ ...data, isCompleted: e.target.checked });
+    // }));
+
     onToggleTask(e.target.checked);
   };
 
@@ -29,13 +40,17 @@ const Tasks = ({ data, onToggleTask, onSave }) => {
 
       {editMode ? (
         <EditTask
-          task={editedTask}
-          onChange={handleEditChange}
-          onSave={() => {
-            onSave(editedTask);
+          task={data}
+          // onChange={handleEditChange}
+          onSave={(updatedTask) => {
+            onSave(updatedTask);
             setEditMode(false);
           }}
           onCancel={() => {
+            setEditMode(false);
+          }}
+          onDelete={() => {
+            onDelete(data.id);
             setEditMode(false);
           }}
         />
@@ -79,6 +94,7 @@ Tasks.propTypes = {
   }).isRequired,
   onToggleTask: PropTypes.func.isRequired,
   onSave: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
 
 export default Tasks;

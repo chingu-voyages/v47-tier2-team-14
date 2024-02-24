@@ -38,3 +38,8 @@
   align-items: flex-start;
   font-size: 14px;
 }
+
+.greyedOut {
+  opacity: 0.5;
+  color: #c4c4c4;
+}
