@@ -1,9 +1,7 @@
-// import { useState } from "react";
-import { Link } from "react-router-dom";
 import TaskForm from "../TaskForm/TaskForm";
 import Modal from "../Modal/Modal";
-import { useTaskManager } from "../TaskManager/TaskManager";
-import { allData } from "../../data/tasks-example";
+import { useTaskManager } from "../../hooks/TaskManager";
+// import { allData } from "../../data/tasks-example";
 import CategoryType from "../../components/CategoryType/CategoryType";
 import styles from "../TaskPage/TaskPage.module.css";
 import AddIcon from "@mui/icons-material/Add";
@@ -24,17 +22,19 @@ const TaskPage = () => {
       <div className={styles.TaskPageNav}>
         {/* NEW TASK BUTTON START */}
         <div className={styles.AddTask}>
-          <Link onClick={openModal} className={styles.addTaskButton}>
+          <button onClick={openModal} className={styles.addTaskButton}>
             <AddIcon />
             <p className={styles.buttonText}>New Task</p>
-          </Link>
+          </button>
           {/* MODAL BODY START */}
           {isModalOpen && (
             <Modal onClose={closeModal}>
               <TaskForm
                 onSave={handleSave}
                 onClose={closeModal}
-                existingCategories={data.map((item) => item.categoryName)}
+                existingCategories={
+                  data ? data.map((item) => item.categoryName) : []
+                }
               />
             </Modal>
           )}
@@ -57,9 +57,9 @@ const TaskPage = () => {
             className={styles.TaskPageNavIcon}
           ></img>
         </div>
-        {allData.map((data, index) => (
+        {/* {allData.map((data, index) => (
           <CategoryType data={data} key={index} id={index} />
-        ))}
+        ))} */}
         {data.map((item, index) => (
           <CategoryType data={item} key={index} />
         ))}
